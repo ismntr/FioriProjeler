@@ -1,0 +1,37 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form" controllerName="ismet.project1.controller.View1" displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+        <InputListItem label="{i18n>NameLabel}">
+            <Input id="name" placeholder="{i18n>NamePlaceholder}" value="{/InputValue}" liveChange=".onLiveChange" />
+        </InputListItem>
+
+        <InputListItem label="{i18n>SurnameLabel}">
+            <Input id="surname" placeholder="{i18n>SurnamePlaceholder}" value="{/InputValue2}" liveChange=".onLiveChange" />
+        </InputListItem>
+
+        <InputListItem label="{i18n>BirthdayLabel}">
+            <DatePicker id="birthday" placeholder="{i18n>BirthdayPlaceholder}" value="{/InputValue3}" />
+        </InputListItem>
+
+        <InputListItem label="{i18n>GenderLabel}" />
+        <RadioButtonGroup id="gender" selectedIndex="{/InputValue4}">
+            <RadioButton text="Erkek" />
+            <RadioButton text="Kadın" />
+        </RadioButtonGroup>
+
+        <InputListItem>
+            <Button text="KAYDET" press="onPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                <layoutData>
+                    <FlexItemData growFactor="1" />
+                </layoutData>
+            </Button>
+        </InputListItem>
+
+        <InputListItem>
+            <Text id="getValue" />
+        </InputListItem>
+
+        <content />
+    </Page>
+</mvc:View>
