@@ -14,6 +14,8 @@
             <DatePicker id="birthday" placeholder="{i18n>BirthdayPlaceholder}" value="{/InputValue3}" />
         </InputListItem>
 
+      
+
         <InputListItem label="{i18n>GenderLabel}" />
         <RadioButtonGroup id="gender" selectedIndex="{/InputValue4}">
             <RadioButton text="Erkek" />

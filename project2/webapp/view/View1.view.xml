@@ -1,8 +1,24 @@
 <mvc:View controllerName="project2.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m" xmlns:l="sap.ui.layout">
     <Page id="page" title="{i18n>title}">
         <content />
+
         
+        <Input id="inputText" placeholder="Yazı giriniz" class="sapUiSmallMargin" height="300px" width="100%" />
+
+        <FlexBox height="100px" alignItems="Start" justifyContent="End">
+            <Button id="Duzelt" text="Düzelt" press="onPress" class="sapUiSmallMargin"  />
+        </FlexBox>
+
+       
+        <VBox>
+            <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
+                <l:content>
+                    <TextArea id="outputText" placeholder="Düzeltilmiş yazı" value="" height="300px" width="100%" />
+                </l:content>
+            </l:VerticalLayout>
+        </VBox>
+
     </Page>
 </mvc:View>

@@ -21,8 +21,9 @@ sap.ui.define(['sap/m/MessageToast',
                 var birthday = this.getView().byId("birthday").getValue().getDate();
                 var gender= this.getView().byId("gender").getSelectedButton().getText();
 
+             
 
-   
+               
 
 
                 MessageToast.show("Adı:" + name + "\n " + "Soyadı:" + surname + "\n " + "Doğum Tarihi:" + birthday + "\n " +  "Cinsiyeti:" + gender  );
