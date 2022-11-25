@@ -8,9 +8,8 @@ sap.ui.define(
     return Controller.extend("project2.controller.View1", {
       onInit: function () {},
       onPress: function (evt) {
-        var text =
-          "bu bir deneme metinidir. deneme metini için yazılmıştır. noktadan sonra.başlayan metin, yazılımıştır.";
-        // var text = this.getView().byId("inputText").getValue();
+       // var text = "bu bir deneme metinidir. deneme metini için yazılmıştır. noktadan sonra.başlayan metin, yazılımıştır.";
+        var text = this.getView().byId("inputText").getValue();
         var array = text.split(".");
         for (let i = 0; i < array.length; i++) {       
           var isBlank = array[i].charAt(0);
