@@ -5,7 +5,6 @@
                 <l:content>
                     <TextArea id="inputText" class="sapUiSmallMargin" placeholder="Yazı giriniz" value="" height="100px" width="100%" />
                 </l:content>
-
                 <Panel>
                     <FlexBox>
                         <Button id="1" text="1" />
