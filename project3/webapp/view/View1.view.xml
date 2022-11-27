@@ -1,7 +1,27 @@
-<mvc:View controllerName="project3.controller.View1"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+<mvc:View controllerName="project3.controller.View1" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+        <VBox>
+            <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
+                <l:content>
+                    <TextArea id="inputText" class="sapUiSmallMargin" placeholder="Yazı giriniz" value="" height="100px" width="100%" />
+                </l:content>
+            </l:VerticalLayout>
+        </VBox>
+        <VBox>
+            <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
+                <l:content>
+                    <TextArea id="outputText" valueState="Success" class="sapUiSmallMargin" placeholder="Düzeltilmiş yazı" value="" height="200px" width="100%" />
+                </l:content>
+            </l:VerticalLayout>
+        </VBox>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button id="Duzelt" text="Düzelt" press="onPress" class="sapUiSmallMargin" />
+                <Button id="DuzeltVeBuyut" text="Düzelt ve Büyüt" type="Emphasized" press="onPress3" />
+                <Button id="Buyut" text="Büyüt" type="Transparent" press="onPress2" />
+            </Toolbar>
+        </footer>
         <content />
     </Page>
 </mvc:View>

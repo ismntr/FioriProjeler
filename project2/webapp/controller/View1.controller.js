@@ -9,12 +9,9 @@ sap.ui.define(
       onInit: function () {},
 
       onPress: function (evt) {
-
-        var text = "Bu bir \"karşılama\" mesajıdır. İkinci mesaj.deneme. üçÜÇÜNCÜ \"mesaj\" da budur.test. "
-        //var text = this.getView().byId("inputText").getValue();
-
+        //var text = "Bu bir \"karşılama\" mesajıdır. İkinci mesaj.deneme. üçÜÇÜNCÜ \"mesaj\" da budur.test. "
+        var text = this.getView().byId("inputText").getValue();
         var array = text.split(".");
-
         for (let i = 0; i < array.length; i++) {
           var isBlank = array[i].charAt(0);
           if (isBlank == " ") {
@@ -28,45 +25,28 @@ sap.ui.define(
               array[i].charAt(0).toUpperCase() +
               array[i].slice(1).toLowerCase();
           }
-
         }
         var text = array.join(".");
-         MessageToast.show("Duzeltildi");
-
-/*
-       var arrayQM = text2.split('\"');
-        for (let i = 0; i < arrayQM.length; i++) {
-          if (i % 2 == 1) {
-            arrayQM[i] = arrayQM[i].toUpperCase();
-          }
-        }     
-         text2 = arrayQM.join("\"");  */
-
-
-
-        this.getView().byId("outputText").setValue(text); 
+        MessageToast.show("Duzeltildi");
+        this.getView().byId("outputText").setValue(text);
       },
       onPress2: function (evt) {
         var text = this.getView().byId("inputText").getValue();
 
+        var arrayQM = text.split('"');
 
-   
-        
-        var arrayQM = text.split('\"');
-        
         for (let i = 0; i < arrayQM.length; i++) {
           if (i % 2 == 1) {
             arrayQM[i] = arrayQM[i].toUpperCase();
           }
           // text2 = arrayQM[i-1] + "\""+ arrayQM[i] + "\""+ arrayQM[i+1];
-        }     
-         text = arrayQM.join("\"");
+        }
+        text = arrayQM.join('"');
 
         this.getView().byId("outputText").setValue(text);
-              MessageToast.show("Büyütüldü");
+        MessageToast.show("Büyütüldü");
       },
       onPress3: function (evt) {
-
         //var text = "Bu bir \"karşılama\" mesajıdır. İkinci mesaj.deneme. üçÜÇÜNCÜ \"mesaj\" da budur.test. "
         var text = this.getView().byId("inputText").getValue();
 
@@ -85,26 +65,21 @@ sap.ui.define(
               array[i].charAt(0).toUpperCase() +
               array[i].slice(1).toLowerCase();
           }
-
         }
         var text2 = array.join(".");
-         MessageToast.show("Duzeltildi");
+        MessageToast.show("Duzeltildi");
 
-
-       var arrayQM = text2.split('\"');
+        var arrayQM = text2.split('"');
         for (let i = 0; i < arrayQM.length; i++) {
           if (i % 2 == 1) {
             arrayQM[i] = arrayQM[i].toUpperCase();
           }
-        }     
-         text2 = arrayQM.join("\"");  
+        }
+        text2 = arrayQM.join('"');
 
-
-
-        this.getView().byId("outputText").setValue(text2); 
+        this.getView().byId("outputText").setValue(text2);
         MessageToast.show("Düzeltildi ve Büyütüldü");
-
-      }
+      },
     });
   }
 );
