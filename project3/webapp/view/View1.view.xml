@@ -5,23 +5,36 @@
                 <l:content>
                     <TextArea id="inputText" class="sapUiSmallMargin" placeholder="Yazı giriniz" value="" height="100px" width="100%" />
                 </l:content>
+
+                <Panel>
+                    <FlexBox>
+                        <Button id="1" text="1" />
+                        <Button id="2" text="2" />
+                        <Button id="3" text="3" />
+                        <Button id="add" text="+" />
+                    </FlexBox>
+                    <FlexBox>
+                        <Button id="4" text="4" />
+                        <Button id="5" text="5" />
+                        <Button id="6" text="6" />
+                        <Button id="sub" text="-" />
+                    </FlexBox>
+                    <FlexBox>
+                        <Button id="7" text="7" />
+                        <Button id="8" text="8" />
+                        <Button id="9" text="9" />
+                        <Button id="mul" text="*" />
+                    </FlexBox>
+                    <FlexBox>
+                        <Button id="dot" text="." />
+                        <Button id="0" text="0" />
+                        <Button id="equal" text="=" press="onPress" />
+                        <Button id="div" text="/" />
+                    </FlexBox>
+                </Panel>
             </l:VerticalLayout>
         </VBox>
-        <VBox>
-            <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
-                <l:content>
-                    <TextArea id="outputText" valueState="Success" class="sapUiSmallMargin" placeholder="Düzeltilmiş yazı" value="" height="200px" width="100%" />
-                </l:content>
-            </l:VerticalLayout>
-        </VBox>
-        <footer>
-            <Toolbar>
-                <ToolbarSpacer />
-                <Button id="Duzelt" text="Düzelt" press="onPress" class="sapUiSmallMargin" />
-                <Button id="DuzeltVeBuyut" text="Düzelt ve Büyüt" type="Emphasized" press="onPress3" />
-                <Button id="Buyut" text="Büyüt" type="Transparent" press="onPress2" />
-            </Toolbar>
-        </footer>
+
         <content />
     </Page>
 </mvc:View>
