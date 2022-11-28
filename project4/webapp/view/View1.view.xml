@@ -1,0 +1,41 @@
+<mvc:View controllerName="project4.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core">
+
+    <Page id="page" title="{i18n>title}">
+        <VBox>
+            <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
+                <l:content>
+                    <TextArea id="inputText" class="sapUiContentPadding sapUiSmallMargin" placeholder="Yazı giriniz"  width="100%" />
+                </l:content>
+                <Panel>
+                    <FlexBox>
+                        <Button id="1" text="1" press="onPress" />
+                        <Button id="2" text="2" press="onPress" />
+                        <Button id="3" text="3" press="onPress" />
+                        <Button id="add" text="+" press="onPress2" />
+                    </FlexBox>
+                    <FlexBox>
+                        <Button id="4" text="4" press="onPress" />
+                        <Button id="5" text="5" press="onPress" />
+                        <Button id="6" text="6" press="onPress" />
+                        <Button id="sub" text="-" press="onPress2" />
+                    </FlexBox>
+                    <FlexBox>
+                        <Button id="7" text="7" press="onPress" />
+                        <Button id="8" text="8" press="onPress" />
+                        <Button id="9" text="9" press="onPress" />
+                        <Button id="mul" text="*" press="onPress2" />
+                    </FlexBox>
+                    <FlexBox>
+                        <Button id="AC" text="AC" press="onPressAC" />
+                        <Button id="0" text="0" press="onPress" />
+                        <Button id="equal" text="=" press="onPress3" />
+                        <Button id="div" text="/" press="onPress2" />
+                    </FlexBox>
+                </Panel>
+            </l:VerticalLayout>
+        </VBox>
+        <content />
+    </Page>
+</mvc:View>
