@@ -1,5 +1,6 @@
-<mvc:View controllerName="project3.controller.View1" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+<mvc:View  xmlns:html="http://www.w3.org/1999/xhtml"
+controllerName="project3.controller.View1" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<!--     <Page id="page" title="{i18n>title}">
         <VBox>
             <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
                 <l:content>
@@ -7,7 +8,7 @@
                 </l:content>
                 <Panel>
                     <FlexBox>
-                        <Button id="1" text="1" />
+                        <Button id="1" text="1" press="onPress" />
                         <Button id="2" text="2" />
                         <Button id="3" text="3" />
                         <Button id="add" text="+" />
@@ -35,5 +36,79 @@
         </VBox>
 
         <content />
+    </Page> -->
+    <Page title="{i18n>title}">
+        <content>
+            <VBox alignItems="Center">
+                <Text text="Under Developement"></Text>
+                <HBox>
+                    <Input value="{inputModel>/expression/}" width="100%"  id="inputText" class="sapUiSmallMargin" placeholder="Yazı giriniz"  height="100px" ></Input>
+                </HBox>
+                <HBox>
+                    <VBox>
+                        <Button text="7" press="editInput(7)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="8" press="editInput(8)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="9" press="editInput(9)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="/" press="editInput('/')"></Button>
+                    </VBox>
+                </HBox>
+                <HBox>
+                    <VBox>
+                        <Button text="4" press="editInput(4)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="5" press="editInput(5)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="6" press="editInput(6)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="X" press="editInput('*')"></Button>
+                    </VBox>
+                </HBox>
+                <HBox>
+                    <VBox>
+                        <Button text="1" press="editInput(1)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="2" press="editInput(2)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="3" press="editInput(3)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="-" press="editInput('-')"></Button>
+                    </VBox>
+                </HBox>
+                <HBox>
+                    <VBox>
+                        <Button text="." press="editInput('.')"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="0" press="editInput(0)"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="=" press="validCompute"></Button>
+                    </VBox>
+                    <VBox>
+                        <Button text="+" press="editInput('+')"></Button>
+                    </VBox>
+                </HBox>
+                <HBox>
+                    <VBox>
+                        <Button text="Clear" press="clearInput"></Button>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </content>
     </Page>
 </mvc:View>
+
+
+  
