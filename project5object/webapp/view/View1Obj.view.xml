@@ -1,7 +1,46 @@
 <mvc:View controllerName="project5object.controller.View1Obj"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:l="sap.ui.layout"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+        <VBox>
+            <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
+                <l:content>
+
+                    <TextArea id="inputText" class="sapUiContentPadding sapUiSmallMargin" placeholder="İlk Sayıyı Giriniz" width="100%" />
+
+                    <FlexBox class="sapUiContentPadding sapUiSmallMargin" width="100%">
+                        <Button text="+" press="onPress2" />
+                        <Button text="-" press="onPress2" />
+                        <Button text="*" press="onPress2" />
+                        <Button text="/" press="onPress2" />
+                    </FlexBox>
+
+                    <TextArea id="inputText2" class="sapUiContentPadding sapUiSmallMargin" placeholder="İkinci Sayıyı Giriniz" width="100%" />
+
+                </l:content>
+                <HBox>
+                    <Panel width="auto" class="sapUiResponsiveMargin">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="Toplu Hesaplama" />
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <FlexBox>
+
+                            <Button text="Ekle" press="onPressEkle" />
+                            <Button text="HESAPLA" press="onPressHesapla" />
+
+                        </FlexBox>
+                    </Panel>
+
+                    <TextArea id="outputText" editable="false" class="sapUiContentPadding sapUiSmallMargin" width="350%" growing="true" />
+
+                </HBox>
+            </l:VerticalLayout>
+        </VBox>
         <content />
+
     </Page>
 </mvc:View>
