@@ -29,7 +29,8 @@ sap.ui.define(
         );
 
         console.log(islem);
-        islemler.push(islem);
+        var calculation = Object.assign({}, islem);
+        islemler.push(calculation);
 
         this.getView().byId("inputText").setValue("");
         this.getView().byId("inputText2").setValue("");
@@ -72,9 +73,7 @@ sap.ui.define(
           outputText += yazdir;
         }
         this.getView().byId("outputText").setValue(outputText);
-
         console.log(Object.getOwnPropertyNames(islem));
-        
         console.log(Object.keys(islem));
       },
     });
