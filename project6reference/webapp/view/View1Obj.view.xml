@@ -8,7 +8,12 @@
             <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
                 <l:content>
 
-                    <TextArea id="inputText" class="sapUiContentPadding sapUiSmallMargin" placeholder="İlk Sayıyı Giriniz" width="100%" />
+
+                    <Input
+                        id="inputText"
+                        type="Number"
+                        placeholder="İlk Sayıyı Giriniz"
+                        class="sapUiContentPadding sapUiSmallMargin" />
 
                     <FlexBox class="sapUiContentPadding sapUiSmallMargin" width="100%">
                         <Button text="+" press="onPress2" />
@@ -17,7 +22,11 @@
                         <Button text="/" press="onPress2" />
                     </FlexBox>
 
-                    <TextArea id="inputText2" class="sapUiContentPadding sapUiSmallMargin" placeholder="İkinci Sayıyı Giriniz" width="100%" />
+                    <Input
+                        id="inputText2"
+                        type="Number"
+                        placeholder="İkinci Sayıyı Giriniz"
+                        class="sapUiContentPadding sapUiSmallMargin" />
 
                 </l:content>
                 <HBox>
