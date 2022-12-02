@@ -14,7 +14,13 @@ sap.ui.define(
 
     var islemler = [];
     return Controller.extend("project5object.controller.View1Obj", {
-      onInit: function () {},
+      onInit: function () {
+          this.oModel = this.getOwnerComponent().getModel("mainModel");
+          this.oModel.setProperty("/input", "yanlış veri");
+      },
+      onPressControl: function (){
+          debugger;
+      },
 
       onPress2: function (evt) {
         islem.operator = evt.getSource().getText();

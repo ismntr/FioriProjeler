@@ -7,7 +7,13 @@
         <VBox>
             <l:VerticalLayout class="sapUiContentPadding sapUiSmallMargin" width="100%">
                 <l:content>
+                    <Input
+                        value ="{mainModel>/input}"
+                        type="Number"
+                        placeholder="İlk Sayıyı Giriniz"
+                        class="sapUiContentPadding sapUiSmallMargin" />
 
+                        <Button text="Debugger" press="onPressControl" />
 
                     <Input
                         id="inputText"
