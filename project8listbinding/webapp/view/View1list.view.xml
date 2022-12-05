@@ -2,6 +2,8 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:form="sap.ui.layout.form"
     height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
     xmlns="sap.m">
     <Page id="contactsPage" title="{i18n>title}" showHeader="true">
         <content />
@@ -22,6 +24,18 @@
             <Label text="{i18n>addressInput}" />
             <TextArea value="{mainModel>/contact/address}" showClearIcon="true" placeholder="{i18n>address}" />
         </form:SimpleForm>
+        <List
+            headerText="contacts"
+            items="{
+			path: '/contacts'
+		}">
+            <items>
+                <StandardListItem
+                    title="{name}"
+                    description="{surname}" />
+            </items>
+        </List>
+
         <OverflowToolbar>
             <ToolbarSpacer />
             <Button text="{i18n>Save}" type="Emphasized" press="onPressSave"></Button>
