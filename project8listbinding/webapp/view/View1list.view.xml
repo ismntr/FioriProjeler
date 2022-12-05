@@ -1,0 +1,32 @@
+<mvc:View controllerName="project8listbinding.controller.View1list"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:form="sap.ui.layout.form"
+    height="100%"
+    xmlns="sap.m">
+    <Page id="contactsPage" title="{i18n>title}" showHeader="true">
+        <content />
+        <form:SimpleForm title="{i18n>viewTitle}" editable="true">
+
+            <Label text="{i18n>nameInput}" />
+            <Input value="{mainModel>/contact/name}" showClearIcon="true" placeholder="{i18n>name}" />
+
+            <Label text="{i18n>surnameInput}" />
+            <Input value="{mainModel>/contact/surname}" showClearIcon="true" placeholder="{i18n>surname}" />
+
+            <Label text="{i18n>phoneInput}" />
+            <MaskInput value="{mainModel>/contact/phone}" mask="+80(999) 999 9999" placeholderSymbol="_" placeholder="{i18n>phone}" showClearIcon="true" />
+
+            <Label text="{i18n>birthdayInput}" />
+            <DatePicker dateValue="{mainModel>/contact/birthday}" placeholder="{i18n>birthday}" showClearIcon="true" />
+
+            <Label text="{i18n>addressInput}" />
+            <TextArea value="{mainModel>/contact/address}" showClearIcon="true" placeholder="{i18n>address}" />
+        </form:SimpleForm>
+        <OverflowToolbar>
+            <ToolbarSpacer />
+            <Button text="{i18n>Save}" type="Emphasized" press="onPressSave"></Button>
+            <Button text="{i18n>Show}" type="Accept" press="onPressShow"></Button>
+        </OverflowToolbar>
+
+    </Page>
+</mvc:View>
