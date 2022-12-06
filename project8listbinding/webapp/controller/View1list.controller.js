@@ -17,9 +17,8 @@ sap.ui.define(
         this.oModel.setProperty("/contacts", []);
         this.oModel.setProperty("/contact/address", "Default Adres");
         // set explored app's demo model on this sample
-        var oModel = (this.oModel =
-          this.getOwnerComponent().getModel("mainModel"));
-        this.getView().setModel(oModel);
+        // var oModel = (this.oModel = this.getOwnerComponent().getModel("mainModel"));
+        // this.getView().setModel(oModel);
       },
       onPressSave: function (evt) {
         var contact = this.oModel.getProperty("/contact");

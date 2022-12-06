@@ -1,14 +1,7 @@
-<mvc:View controllerName="project8listbinding.controller.View1list"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:form="sap.ui.layout.form"
-    height="100%"
-    xmlns:core="sap.ui.core"
-    xmlns:l="sap.ui.layout"
-    xmlns="sap.m">
+<mvc:View controllerName="project8listbinding.controller.View1list" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:form="sap.ui.layout.form" height="100%" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns="sap.m">
     <Page id="contactsPage" title="{i18n>title}" showHeader="true">
         <content />
         <form:SimpleForm title="{i18n>viewTitle}" editable="true">
-
             <Label text="{i18n>nameInput}" />
             <Input value="{mainModel>/contact/name}" showClearIcon="true" placeholder="{i18n>name}" />
 
@@ -19,28 +12,30 @@
             <MaskInput value="{mainModel>/contact/phone}" mask="+80(999) 999 9999" placeholderSymbol="_" placeholder="{i18n>phone}" showClearIcon="true" />
 
             <Label text="{i18n>birthdayInput}" />
-            <DatePicker dateValue="{mainModel>/contact/birthday}" placeholder="{i18n>birthday}" showClearIcon="true" />
+            <DatePicker dateValue="{mainModel>/contact/birthday}" placeholder="{i18n>birthday}" />
 
             <Label text="{i18n>addressInput}" />
-            <TextArea value="{mainModel>/contact/address}" showClearIcon="true" placeholder="{i18n>address}" />
+            <TextArea value="{mainModel>/contact/address}" placeholder="{i18n>address}" />
         </form:SimpleForm>
-        <List
-            headerText="contacts"
-            items="{
+
+        <!-- <List headerText="contacts" items="{
 			path: '/contacts'
 		}">
-            <items>
-                <StandardListItem
-                    title="{name}"
-                    description="{surname}" />
-            </items>
+                <items>
+                    <StandardListItem title="{name}" description="{surname}" info="{phone}" infoStateInverted="true" />
+                </items>
+            </List> -->
+        <List headerText="{i18n>contacts}" items="{
+			path: 'mainModel>/contacts'
+		}">
+            <StandardListItem title="{mainModel>name} {mainModel>surname}" description="{mainModel>address} {path: 'mainModel>birthday', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }
+             " counter="" info="{mainModel>phone}" infoStateInverted="true" />
         </List>
 
         <OverflowToolbar>
             <ToolbarSpacer />
-            <Button text="{i18n>Save}" type="Emphasized" press="onPressSave"></Button>
-            <Button text="{i18n>Show}" type="Accept" press="onPressShow"></Button>
+            <Button text="{i18n>Save}" type="Emphasized" press="onPressSave" />
+            <Button text="{i18n>Show}" type="Accept" press="onPressShow" />
         </OverflowToolbar>
-
     </Page>
 </mvc:View>
