@@ -9,7 +9,7 @@
             <Input value="{mainModel>/contact/surname}" showClearIcon="true" placeholder="{i18n>surname}" />
 
             <Label text="{i18n>phoneInput}" />
-            <MaskInput value="{mainModel>/contact/phone}" mask="+80(999) 999 9999" placeholderSymbol="_" placeholder="{i18n>phone}" showClearIcon="true" />
+            <Input value="{mainModel>/contact/phone}" showClearIcon="true" placeholder="{i18n>phone}" />
 
             <Label text="{i18n>birthdayInput}" />
             <DatePicker dateValue="{mainModel>/contact/birthday}" placeholder="{i18n>birthday}" />
@@ -18,13 +18,6 @@
             <TextArea value="{mainModel>/contact/address}" placeholder="{i18n>address}" />
         </form:SimpleForm>
 
-        <!-- <List headerText="contacts" items="{
-			path: '/contacts'
-		}">
-                <items>
-                    <StandardListItem title="{name}" description="{surname}" info="{phone}" infoStateInverted="true" />
-                </items>
-            </List> -->
         <List headerText="{i18n>contacts}" items="{
 			path: 'mainModel>/contacts'
 		}">
