@@ -14,18 +14,44 @@ sap.ui.define(
     return Controller.extend("project10idcheck.controller.View1IdCheck", {
       onInit: function () {
         this.oModel = this.getOwnerComponent().getModel("mainModel");
+        this.i18n = this.getOwnerComponent().getModel("i18n");
+
         this.oModel.setProperty("/contact", {});
         this.oModel.setProperty("/contacts", []);
-        this.oModel.setProperty("/contact/id", "11111111111");
-        this.oModel.setProperty("/contact/name", " isim");
-        this.oModel.setProperty("/contact/surname", " soyisim");
-        this.oModel.setProperty("/contact/phone", "(555)555 55 55");
-        this.oModel.setProperty("/contact/address", "adres 1");
-        this.oModel.setProperty("/contact/birthday", new Date());
+
+        var acilis = {
+          id: "11111111111",
+          name: "isim",
+          surname: "soyisim",
+          phone: "(555)555 55 55",
+          address: "adres 1",
+          birthday: new Date(),
+        };
+        this.oModel.setProperty("/contact/", acilis);
       },
+
       onPressSave: function (evt) {
         var contact = this.oModel.getProperty("/contact");
         var contacts = this.oModel.getProperty("/contacts");
+        //validations
+        if (this.oModel.getProperty("/inputEnabled") == false) {
+          for (let i = 0; i < contacts.length; i++) {
+            if (contacts[i].id === contact.id) {
+              contacts[i].name = this.oModel.getProperty("/contact/name");
+              contacts[i].surname = this.oModel.getProperty("/contact/surname");
+              contacts[i].phone = this.oModel.getProperty("/contact/phone");
+              contacts[i].birthday =
+                this.oModel.getProperty("/contact/birthday");
+              contacts[i].address = this.oModel.getProperty("/contact/address");
+
+              this.oModel.setProperty("/inputEnabled", true);
+
+              return;
+            }
+            return;
+          }
+          return;
+        }
         if (
           !contact.id ||
           !contact.name ||
@@ -34,77 +60,94 @@ sap.ui.define(
           !contact.birthday ||
           !contact.address
         ) {
-          MessageBox.error("Please fill in all required fields");
+          this.showMessage(this.i18n.getProperty("inputError"));
           return;
         }
-        if (
-          contact.id === "" ||
-          contact.name === "" ||
-          contact.surname === "" ||
-          contact.phone === "" ||
-          contact.birthday === "" ||
-          contact.address === ""
-        ) {
-          MessageBox.error("Please enter a valid value for all fields");
+
+        if (contact.id.length != 11) {
+          this.showMessage(this.i18n.getProperty("idLengthError"));
           return;
         }
+
+        for (let i = 0; i < contacts.length; i++) {
+          if (contacts[i].id === contact.id) {
+            this.showMessage(this.i18n.getProperty("idError"));
+            return;
+          }
+        }
+
+        for (let i = 0; i < contacts.length; i++) {
+          if (contacts[i].id === contact.id) {
+            contacts[i].name = this.oModel.getProperty("/contact/name");
+            return;
+          }
+        }
+
         var contactsAssign = Object.assign({}, contact);
         contacts.push(contactsAssign);
         this.oModel.setProperty("/contacts", contacts);
-        this.oModel.setProperty("/contact", {});
+        this.onPressShow();
+        this.onPressClear();
+        this.oModel.setProperty("/inputEnabled", true);
       },
+
       onPressShow: function (evt) {
+        var showInput = this.oModel.getProperty("/contact");
+
         MessageToast.show(
           "TC: " +
-            this.oModel.getProperty("/contact/id") +
+            showInput.id +
+            "\n" +
             "Adı: " +
-            this.oModel.getProperty("/contact/name") +
+            showInput.name +
             "\n" +
             "Soyadı: " +
-            this.oModel.getProperty("/contact/surname") +
+            showInput.surname +
             "\n" +
             "Telefon: " +
-            this.oModel.getProperty("/contact/phone") +
+            showInput.phone +
             "\n" +
             "Doğrum Günü: " +
-            this.oModel.getProperty("/contact/address") +
+            showInput.birthday.getDay() +
+            "." +
+            (showInput.birthday.getMonth() + 1) +
+            "." +
+            showInput.birthday.getFullYear() +
             "\n" +
             "Adress: " +
-            this.oModel.getProperty("/contact/birthday")
+            showInput.address
         );
-
         console.log(this.oModel.getProperty("/contacts"));
       },
+
       onPressClear: function (evt) {
         this.oModel.setProperty("/contact", {});
       },
+
+      showMessage: function (message) {
+        MessageBox.error(message);
+      },
+
       onPressSelect: function (oEvent) {
         var selectedPath = oEvent.getSource().getSelectedContexts()[0].sPath;
         var selectedItem = this.oModel.getProperty(selectedPath);
-        this.oModel.setProperty("/contact", selectedItem);
+
+        var ItemAssign = Object.assign({}, selectedItem);
+        this.oModel.setProperty("/contact", ItemAssign);
+        this.getView().byId("inputID").setEnabled(false);
+
+        this.inputIdDisabled();
       },
+
+      inputIdDisabled: function () {
+        this.oModel.setProperty("/inputEnabled", false);
+      },
+
       onChange: function (oEvent) {
         var oInput = oEvent.getSource();
         var sValue = oInput.getValue();
-        new oInput({
-          type: "Number",
-          value: {
-            path: "/contact/id",
-            type: "sap.ui.model.type.Integer",
-            constraints: {
-              minimun: 11,
-              maximum: 11,
-            },
-          },
-        });
 
         if (sValue.length === 0) {
-          oInput.setValueState("Error");
-        } else {
-          oInput.setValueState("None");
-        }
-
-        if (sValue.length != 11) {
           oInput.setValueState("Error");
         } else {
           oInput.setValueState("None");
