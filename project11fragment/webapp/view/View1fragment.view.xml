@@ -1,7 +1,8 @@
 <mvc:View controllerName="project11fragment.controller.View1fragment" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:form="sap.ui.layout.form" height="100%" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" >
-    <Page id="page" title="{i18n>title}" showHeader="true">
+    <Page id="page" title="{i18n>title}" showHeader="true" >
+        
         <content />
-        <form:SimpleForm title="{i18n>viewTitle}" editable="true">
+<!--         <form:SimpleForm title="{i18n>viewTitle}" editable="true">
             <Label text="{i18n>idInput}" />
             <Input  type="Number" placeholder="{i18n>id}" showClearIcon="true" required="true" maxLength="11" enabled="{mainModel>/inputEnabled}" value="{mainModel>/contact/id}" valueState="Error" valueStateText="Please enter a ID" change="onChange" />
 
@@ -19,14 +20,13 @@
 
             <Label text="{i18n>addressInput}" />
             <TextArea value="{mainModel>/contact/address}" placeholder="{i18n>address}" required="true" valueState="Error" valueStateText="Please enter an address" change="onChange" />
-        </form:SimpleForm>
+        </form:SimpleForm> -->
         <Panel>
             <FlexBox alignItems="Start" justifyContent="End">
-                <Button icon="sap-icon://save" text="{i18n>Save}" type="Emphasized" press="onPressSave" />
+                <!-- <Button icon="sap-icon://save" text="{i18n>Save}" type="Emphasized" press="onPressSave" />
                 <Button text="{i18n>Show}" type="Accept" press="onPressShow" />
-                <Button text="{i18n>Clear}" type="Reject" press="onPressClear" />
+                <Button text="{i18n>Clear}" type="Reject" press="onPressClear" /> -->
                 <Button text="{i18n>New}"  press="onPressNew" />
-
             </FlexBox>
         </Panel>
         <List id="myList" headerText="{i18n>contacts}" mode="SingleSelectMaster" select="onPressSelect" items="{

@@ -107,6 +107,7 @@ sap.ui.define(
         this.onPressShow();
         this.onPressClear();
         this.oModel.setProperty("/inputEnabled", true);
+        this._getDialogContact("project11fragment.view.fragments.NewContact").close();
       },
 
       onPressShow: function (evt) {
