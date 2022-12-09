@@ -34,24 +34,26 @@ sap.ui.define(
         var contact = this.oModel.getProperty("/contact");
         var contacts = this.oModel.getProperty("/contacts");
         //validations
+
         if (this.oModel.getProperty("/inputEnabled") == false) {
           for (let i = 0; i < contacts.length; i++) {
             if (contacts[i].id === contact.id) {
-              contacts[i].name = this.oModel.getProperty("/contact/name");
-              contacts[i].surname = this.oModel.getProperty("/contact/surname");
-              contacts[i].phone = this.oModel.getProperty("/contact/phone");
-              contacts[i].birthday =
-                this.oModel.getProperty("/contact/birthday");
-              contacts[i].address = this.oModel.getProperty("/contact/address");
+              contacts[i].name = contact.name;
+              contacts[i].surname = contact.surname;
+              contacts[i].phone = contact.phone;
+              contacts[i].birthday = contact.birthday;
+              contacts[i].address = contact.address;
 
               this.oModel.setProperty("/inputEnabled", true);
 
+             
+              this.byId("myList").removeSelections(true);
+
               return;
             }
-            return;
           }
-          return;
         }
+
         if (
           !contact.id ||
           !contact.name ||
@@ -122,6 +124,8 @@ sap.ui.define(
 
       onPressClear: function (evt) {
         this.oModel.setProperty("/contact", {});
+        this.oModel.setProperty("/inputEnabled", true);
+        this.byId("myList").removeSelections(true);
       },
 
       showMessage: function (message) {
@@ -134,11 +138,9 @@ sap.ui.define(
 
         var ItemAssign = Object.assign({}, selectedItem);
         this.oModel.setProperty("/contact", ItemAssign);
-        this.getView().byId("inputID").setEnabled(false);
 
         this.inputIdDisabled();
       },
-
       inputIdDisabled: function () {
         this.oModel.setProperty("/inputEnabled", false);
       },
