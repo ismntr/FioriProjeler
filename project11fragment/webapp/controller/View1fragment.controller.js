@@ -29,6 +29,23 @@ sap.ui.define(
         };
         this.oModel.setProperty("/contact/", acilis);
       },
+      onPressNew: function(oEvent){
+        this._getDialogContact("project11fragment.view.fragments.NewContact").open();
+
+      },
+      onPressCloseNewContact: function(oEvent){
+        this._getDialogContact("project11fragment.view.fragments.NewContact").close();
+
+      },
+      _getDialogContact: function (fragName) {
+        if (!this._oDialogContact) {
+            this._oDialogContact = sap.ui.xmlfragment(fragName, this);
+            this.getView().addDependent(this._oDialogContact);
+        }
+        return this._oDialogContact;
+    },
+
+
 
       onPressSave: function (evt) {
         var contact = this.oModel.getProperty("/contact");
@@ -110,11 +127,11 @@ sap.ui.define(
             "\n" +
 
             "Doğrum Günü: " +
-            (" " && showInput.birthday.getDate()) +
-            "."  +
-            ( showInput.birthday.getMonth() + 1) +
-            "."  +
-            ( showInput.birthday.getFullYear()) +
+            showInput.birthday.getDay() +
+            "." +
+            (showInput.birthday.getMonth() + 1) +
+            "." +
+            showInput.birthday.getFullYear() +
 
             "\n" +
             "Adress: " +
