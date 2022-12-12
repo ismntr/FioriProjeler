@@ -2,9 +2,11 @@
     <Page id="page"  showHeader="true">
         <headerContent>
             <Button icon="sap-icon://user-edit" text="{i18n>New}" press="onPressNew" enabled="true" />
+            <Button icon="sap-icon://delete" text="{i18n>Delete}" press="delete" enabled="true" />
+
         </headerContent>
         <content />
-        <List id="myList" headerText="{i18n>contacts}" mode="SingleSelectMaster" select="onPressSelect" items="{ path: 'mainModel>/contacts' }">
+        <List id="myList" headerText="{i18n>contacts}" mode="{mainModel>/mode}" select="onPressSelect" 	delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }">
 
             <items>
                 <StandardListItem
