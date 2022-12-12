@@ -29,16 +29,19 @@ sap.ui.define(
         };
         this.oModel.setProperty("/contact/", acilis);
       },
+
       onPressNew: function (oEvent) {
         this._getDialogContact(
           "project11fragment.view.fragments.NewContact"
         ).open();
       },
+
       onPressCloseNewContact: function (oEvent) {
         this._getDialogContact(
           "project11fragment.view.fragments.NewContact"
         ).close();
       },
+
       delete: function (oEvent) {
         if (this.oModel.getProperty("/mode") == "Delete") {
           this.oModel.setProperty("/mode", "SingleSelectMaster");
@@ -46,13 +49,13 @@ sap.ui.define(
           this.oModel.setProperty("/mode", "Delete");
         }
       },
-      handleDelete: function (oEvent) {
-        var contacts = this.oModel.getProperty("/contacts");
-        var oList = oEvent.getSource(),
-				sPath =  oEvent.getParameter("listItem").getBindingContextPath(),
-				oItem =  this.oModel.getProperty(sPath)
 
-        contacts.splice(contacts.indexOf(oItem));
+      handleDelete: function (oEvent) {
+        var contacts = this.oModel.getProperty("/contacts"),
+          sPath = oEvent.getParameter("listItem").getBindingContextPath(),
+          oItem = this.oModel.getProperty(sPath),
+          indexDelete = contacts.indexOf(oItem);
+        contacts.splice(indexDelete,1);
 
         this.oModel.setProperty("/contacts", contacts);
       },
@@ -157,7 +160,7 @@ sap.ui.define(
             showInput.address
         );
 
-        console.log(this.oModel.getProperty("/contacts"));
+        // console.log(this.oModel.getProperty("/contacts"));
       },
 
       onPressClear: function (evt) {
@@ -173,12 +176,13 @@ sap.ui.define(
       onPressSelect: function (oEvent) {
         var selectedPath = oEvent.getSource().getSelectedContexts()[0].sPath;
         var selectedItem = this.oModel.getProperty(selectedPath);
-
         var ItemAssign = Object.assign({}, selectedItem);
         this.oModel.setProperty("/contact", ItemAssign);
         this.oModel.setProperty("/mode", "SingleSelectMaster");
         this.inputIdDisabled();
+        this.onPressNew();
       },
+
       inputIdDisabled: function () {
         this.oModel.setProperty("/inputEnabled", false);
       },
