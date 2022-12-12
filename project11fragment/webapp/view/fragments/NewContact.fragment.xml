@@ -29,15 +29,22 @@
             <TextArea value="{mainModel>/contact/address}" placeholder="{i18n>address}" required="true" valueState="Error" valueStateText="Please enter an address" change="onChange" />
         </form:SimpleForm>
 
+
+
+        <Toolbar>
+            <ToolbarSpacer/>
+            <Button  icon="sap-icon://employee-rejections" text="{i18n>Clear}" type="Reject" press="onPressClear" />
+
+        </Toolbar>
+
         <beginButton>
 
-            <Button icon="sap-icon://save" text="{i18n>Save}" type="Emphasized" press="onPressSave" />
-            <!--                 <Button text="{i18n>Show}" type="Accept" press="onPressShow" />
- -->
-
-        </beginButton>
-        <endButton>
-            <Button text="{i18n>Clear}" type="Reject" press="onPressClear" />
+            <Button icon="sap-icon://employee-approvals" text="{i18n>Save}" type="Emphasized" press="onPressSave" />
+                
+                
+            </beginButton>
+            <endButton>
+                <Button  icon="sap-icon://personnel-view" text="{i18n>Show}" type="Accept" press="onPressShow" />
 
         </endButton>
     </Dialog>
