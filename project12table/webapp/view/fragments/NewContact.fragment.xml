@@ -31,14 +31,15 @@
 
         <Toolbar>
             <ToolbarSpacer />
+            <Button icon="sap-icon://personnel-view" text="{i18n>Show}" type="Emphasized" press="onPressShow" />
             <Button icon="sap-icon://employee-rejections" text="{i18n>Clear}" type="Reject" press="onPressClear" />
         </Toolbar>
 
         <beginButton>
-            <Button icon="sap-icon://employee-approvals" text="{i18n>Save}" type="Emphasized" press="onPressSave" />
+            <Button icon="sap-icon://employee-approvals" text="{i18n>Save}" type="Accept" press="onPressSave" />
         </beginButton>
         <endButton>
-            <Button icon="sap-icon://personnel-view" text="{i18n>Show}" type="Accept" press="onPressShow" />
+            <Button icon="sap-icon://decline" text="{i18n>Cancel}" type="Reject" press="onPressCloseNewContact" />
         </endButton>
     </Dialog>
 </core:FragmentDefinition>

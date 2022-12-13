@@ -94,7 +94,7 @@ sap.ui.define(
 
               this.oModel.setProperty("/inputEnabled", true);
 
-              this.byId("myList").removeSelections(true);
+              this.byId("myTable").removeSelections(true);
 
               return;
             }
@@ -128,9 +128,7 @@ sap.ui.define(
         this.oModel.setProperty("/inputEnabled", true);
         this.oModel.setProperty("/mode", "SingleSelectMaster");
 
-        this._getDialogContact(
-          "project11fragment.view.fragments.NewContact"
-        ).close();
+        this.onPressCloseNewContact();
       },
 
       onPressShow: function (evt) {
@@ -166,7 +164,6 @@ sap.ui.define(
       onPressClear: function (evt) {
         this.oModel.setProperty("/contact", {});
         this.oModel.setProperty("/inputEnabled", true);
-        this.byId("myList").removeSelections(true);
       },
 
       showMessage: function (message) {

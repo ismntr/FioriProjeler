@@ -5,16 +5,39 @@
             <Button icon="sap-icon://delete" text="{i18n>Delete}" press="delete" enabled="true" />
         </headerContent>
         <content />
-        <List id="myList" headerText="{i18n>contacts}" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }">
+        <Table id="myTable" headerText="{i18n>contacts}" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }">
+            <columns>
+                <Column width="30%">
+                    <Text text="ID" />
+                </Column>
+                <Column width="30%">
+                    <Text text="İSİM" />
+                </Column>
+                <Column width="30%">
+                    <Text text="SOYİSİM" />
+                </Column>
+                <Column width="30%">
+                    <Text text="TELEFON" />
+                </Column>
+                <Column width="30%">
+                    <Text text="DOĞUM GÜNÜ" />
+                </Column>
+                <Column width="100%">
+                    <Text text="ADRES" />
+                </Column>
+            </columns>
             <items>
-                <StandardListItem
-                    title="ID: {mainModel>id} İSİM: {mainModel>name} SOYİSİM: {mainModel>surname}"
-                    description="ADRES: {mainModel>address} DOĞUM GÜNÜ: {path: 'mainModel>birthday', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }"
-                    icon="{ProductPicUrl}"
-                    info=" TELEFON: +90{mainModel>phone}"
-                    infoStateInverted="true"
-                />
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier text="{mainModel>id}" />
+                        <Text text="{mainModel>name}" />
+                        <Text text="{mainModel>surname}" />
+                        <Text text="+90{mainModel>phone}" />
+                        <Text text="{path: 'mainModel>birthday', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }" />
+                        <Text text="{mainModel>address}" />
+                    </cells>
+                </ColumnListItem>
             </items>
-        </List>
+        </Table>
     </Page>
 </mvc:View>
