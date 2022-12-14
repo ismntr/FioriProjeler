@@ -5,8 +5,10 @@
             <Button icon="sap-icon://delete" text="{i18n>Delete}" press="delete" enabled="true" />
         </headerContent>
         <content />
+        <Input id="nameSurnameInput" placeholder="Search by name and surname" liveChange="onNameSurnameSearch" />
         <Table id="myTable" headerText="{i18n>contacts}" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }">
             <columns>
+                
 
                 <Column vAlign="Middle" hAlign="Left" flexible="true" width="30%">
                     <Text text="{i18n>idInput}" />

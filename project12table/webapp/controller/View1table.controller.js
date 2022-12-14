@@ -29,6 +29,17 @@ sap.ui.define(
         };
         this.oModel.setProperty("/contact/", acilis);
       },
+      onNameSurnameSearch: function(oEvent) {
+        var sSearchValue = oEvent.getParameter("value");
+        var oBinding = this.byId("myTable").getBinding("items");
+        
+        // Create a filter object with the search value
+        var oFilter = new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.Contains, sSearchValue);
+        oFilter = new sap.ui.model.Filter("surname", sap.ui.model.FilterOperator.Contains, sSearchValue, oFilter);
+        
+        // Apply the filter to the table binding
+        oBinding.filter(oFilter);
+        },
 
       onPressNew: function (oEvent) {
         this._getDialogContact(
