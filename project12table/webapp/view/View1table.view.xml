@@ -26,7 +26,6 @@
                 <Column vAlign="Middle" hAlign="Center" width="100%">
                     <Text text="{i18n>addressInput}" />
                 </Column>
-
             </columns>
             <items>
                 <ColumnListItem>

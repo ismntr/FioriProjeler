@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:f="sap.f">
-    <Dialog stretch="true" title=" ASSD">
+    <Dialog stretch="true" >
         <customHeader>
             <Toolbar>
                 <HBox width="100%" alignItems="Center" justifyContent="SpaceBetween">
@@ -9,7 +9,7 @@
             </Toolbar>
         </customHeader>
 
-        <form:SimpleForm title="{i18n>viewTitle}" editable="true">
+        <form:SimpleForm  title="{i18n>viewTitle}" editable="true">
             <Label text="{i18n>idInput}" />
             <Input type="Number" placeholder="{i18n>id}" showClearIcon="true" required="true" maxLength="11" enabled="{mainModel>/inputEnabled}" value="{mainModel>/contact/id}" valueState="Error" valueStateText="{i18n>enterId}" change="onChange" />
 
@@ -20,10 +20,10 @@
             <Input value="{mainModel>/contact/surname}" showClearIcon="true" placeholder="{i18n>surname}" required="true" valueState="Error" valueStateText="{i18n>enterSurname}" change="onChange" />
 
             <Label text="{i18n>phoneInput}" />
-            <MaskInput value="{mainModel>/contact/phone}" mask="(999) 999 9999" placeholder="{i18n>phone}" showClearIcon="true" required="true" valueState="Error" valueStateText="{i18n>enterPhone}" change="onChange" />
+            <Input value="{mainModel>/contact/phone}"  placeholder="{i18n>phone}" showClearIcon="true" required="true" valueState="Error" valueStateText="{i18n>enterPhone}" change="onChange" />
 
             <Label text="{i18n>birthdayInput}" />
-            <DatePicker dateValue="{mainModel>/contact/birthday}" placeholder="{i18n>birthday}" required="true" valueState="Error" valueStateText="{i18n>enterBirthday}" change="onChange" />
+            <DatePicker dateValue="{mainModel>/contact/birthday}" placeholder="{i18n>birthday}" displayFormat="dd.MM.yyyy" required="true" valueState="Error" valueStateText="{i18n>enterBirthday}" change="onChange" />
 
             <Label text="{i18n>addressInput}" />
             <TextArea value="{mainModel>/contact/address}" placeholder="{i18n>address}" required="true" valueState="Error" valueStateText="{i18n>enterAddress}" change="onChange" />

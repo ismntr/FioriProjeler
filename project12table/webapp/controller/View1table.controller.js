@@ -95,6 +95,8 @@ sap.ui.define(
               this.oModel.setProperty("/inputEnabled", true);
 
               this.byId("myTable").removeSelections(true);
+              this.onPressCloseNewContact();
+
 
               return;
             }
