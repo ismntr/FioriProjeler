@@ -7,24 +7,26 @@
         <content />
         <Table id="myTable" headerText="{i18n>contacts}" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }">
             <columns>
-                <Column width="30%">
-                    <Text text="ID" />
+
+                <Column vAlign="Middle" hAlign="Left" flexible="true" width="30%">
+                    <Text text="{i18n>idInput}" />
                 </Column>
-                <Column width="30%">
-                    <Text text="İSİM" />
+                <Column vAlign="Middle" hAlign="Left" width="30%">
+                    <Text text="{i18n>nameInput}" />
                 </Column>
-                <Column width="30%">
-                    <Text text="SOYİSİM" />
+                <Column vAlign="Middle" hAlign="Left" width="30%">
+                    <Text text="{i18n>surnameInput}" />
                 </Column>
-                <Column width="30%">
-                    <Text text="TELEFON" />
+                <Column vAlign="Middle" hAlign="Center" width="30%">
+                    <Text text="{i18n>phoneInput}" />
                 </Column>
-                <Column width="30%">
-                    <Text text="DOĞUM GÜNÜ" />
+                <Column vAlign="Middle" hAlign="Center" width="30%">
+                    <Text text="{i18n>birthdayInput}" />
                 </Column>
-                <Column width="100%">
-                    <Text text="ADRES" />
+                <Column vAlign="Middle" hAlign="Center" width="100%">
+                    <Text text="{i18n>addressInput}" />
                 </Column>
+
             </columns>
             <items>
                 <ColumnListItem>
