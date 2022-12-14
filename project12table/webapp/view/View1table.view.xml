@@ -34,7 +34,7 @@
                         <Text text="{mainModel>name}" />
                         <Text text="{mainModel>surname}" />
                         <Text text="+90{mainModel>phone}" />
-                        <Text text="{path: 'mainModel>birthday', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }" />
+                        <Input value="{path: 'mainModel>birthday', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }" />
                         <Text text="{mainModel>address}" />
                     </cells>
                 </ColumnListItem>
