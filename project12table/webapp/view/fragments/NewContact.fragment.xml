@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:f="sap.f">
-    <Dialog stretch="true" >
+    <Dialog>
         <customHeader>
             <Toolbar>
                 <HBox width="100%" alignItems="Center" justifyContent="SpaceBetween">
@@ -9,7 +9,7 @@
             </Toolbar>
         </customHeader>
 
-        <form:SimpleForm  title="{i18n>viewTitle}" editable="true">
+        <form:SimpleForm title="{i18n>viewTitle}" editable="true">
             <Label text="{i18n>idInput}" />
             <Input type="Number" placeholder="{i18n>id}" showClearIcon="true" required="true" maxLength="11" enabled="{mainModel>/inputEnabled}" value="{mainModel>/contact/id}" valueState="Error" valueStateText="{i18n>enterId}" change="onChange" />
 
@@ -20,7 +20,7 @@
             <Input value="{mainModel>/contact/surname}" showClearIcon="true" placeholder="{i18n>surname}" required="true" valueState="Error" valueStateText="{i18n>enterSurname}" change="onChange" />
 
             <Label text="{i18n>phoneInput}" />
-            <Input value="{mainModel>/contact/phone}"  placeholder="{i18n>phone}" showClearIcon="true" required="true" valueState="Error" valueStateText="{i18n>enterPhone}" change="onChange" />
+            <Input value="{mainModel>/contact/phone}" placeholder="{i18n>phone}" showClearIcon="true" required="true" valueState="Error" valueStateText="{i18n>enterPhone}" change="onChange" />
 
             <Label text="{i18n>birthdayInput}" />
             <DatePicker dateValue="{mainModel>/contact/birthday}" placeholder="{i18n>birthday}" displayFormat="dd.MM.yyyy" required="true" valueState="Error" valueStateText="{i18n>enterBirthday}" change="onChange" />
@@ -31,8 +31,8 @@
 
         <Toolbar>
             <ToolbarSpacer />
-            <Button icon="sap-icon://personnel-view" text="{i18n>Show}" type="Emphasized" press="onPressShow" />
-            <Button icon="sap-icon://employee-rejections" text="{i18n>Clear}" type="Reject" press="onPressClear" />
+            <Button icon="sap-icon://personnel-view" text="{i18n>Show}" press="onPressShow" />
+            <Button icon="sap-icon://employee-rejections" text="{i18n>Clear}" press="onPressClear" />
         </Toolbar>
 
         <beginButton>
