@@ -32,25 +32,28 @@ sap.ui.define(
       onNameSurnameSearch: function (oEvent) {
         var sSearchValue = oEvent.getParameter("value");
         var oBinding = this.byId("myTable").getBinding("items");
+        var aFilter = new sap.ui.model.Filter({
+          filters: [
+            new sap.ui.model.Filter(
+              "name",
+              sap.ui.model.FilterOperator.Contains,
+              sSearchValue
+            ),
+            new sap.ui.model.Filter(
+              "surname",
+              sap.ui.model.FilterOperator.Contains,
+              sSearchValue
+            ),
+          ],
+          and: false,
+        });
 
-        // Create a filter object with the search value for both name and surname fields
-        var oNameFilter = new sap.ui.model.Filter(
-          "name",
-          sap.ui.model.FilterOperator.Contains,
-          sSearchValue
-        );
-        var oSurnameFilter = new sap.ui.model.Filter(
-          "surname",
-          sap.ui.model.FilterOperator.Contains,
-          sSearchValue
-        );
-        var oFilter = new sap.ui.model.Filter(
-          [oNameFilter, oSurnameFilter],
-          sap.ui.model.FilterOperator.And
-        );
+        oBinding.filter(aFilter);
+      },
 
-        // Apply the filter to the table binding
-        oBinding.filter(oFilter);
+      sortById: function (oColumn) {
+        var oSorter = new sap.ui.model.Sorter("id", false);
+        this.byId("myTable").getBinding("items").sort(oSorter);
       },
 
       onPressNew: function (oEvent) {
