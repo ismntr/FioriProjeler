@@ -11,9 +11,9 @@
         </OverflowToolbar>
         <content />
 
-        <Table id="myTable" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }" >
+        <Table id="myTable" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }">
             <columns>
-                <Column vAlign="Middle" hAlign="Left" flexible="true" width="30%" >
+                <Column vAlign="Middle" hAlign="Left" flexible="true" width="30%">
                     <Text text="{i18n>idInput}" />
                 </Column>
                 <Column vAlign="Middle" hAlign="Left" width="30%">
@@ -26,6 +26,13 @@
                     <Text text="{i18n>phoneInput}" />
                 </Column>
                 <Column vAlign="Middle" hAlign="Center" width="30%">
+                    <Text text="{i18n>genderInput}" />
+                </Column>
+                <Column vAlign="Middle" hAlign="Center" width="30%">
+                    <Text text="{i18n>statusInput}" />
+                </Column>
+
+                <Column vAlign="Middle" hAlign="Center" width="30%">
                     <Text text="{i18n>birthdayInput}" />
                 </Column>
                 <Column vAlign="Middle" hAlign="Center" width="100%">
@@ -36,11 +43,12 @@
                 <ColumnListItem>
                     <cells>
                         <ObjectIdentifier text="{mainModel>id}" />
-                        <Text text="{mainModel>name}" />
-                        <Text text="{mainModel>surname}" />
-                        <Text text="+90{mainModel>phone}" />
+                        <Input value="{mainModel>name}" change="onChange" />
+                        <Input value="{mainModel>surname}" change="onChange" />
+                        <Input value="{path: 'mainModel>phone', formatter: 'your.formatter.phoneNumber'}" change="onChange" />
+                        <ComboBox items="{path: 'mainModel>/genders', templateShareable: false}" selectedKey="{mainModel>gender}" change="onChange" />
+                        <Text text="{path: 'mainModel>active', formatter: '.formatter.activeStatus'}" />
                         <DatePicker dateValue="{mainModel>birthday}" />
-                            
                         <Text text="{mainModel>address}" />
                     </cells>
                 </ColumnListItem>

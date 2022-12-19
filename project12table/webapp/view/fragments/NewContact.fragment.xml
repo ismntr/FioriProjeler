@@ -27,6 +27,15 @@
 
             <Label text="{i18n>addressInput}" />
             <TextArea value="{mainModel>/contact/address}" placeholder="{i18n>address}" required="true" valueState="Error" valueStateText="{i18n>enterAddress}" change="onChange" />
+
+            <Label text="{i18n>genderInput}" />
+            <RadioButtonGroup name="gender" selectedKey="{mainModel>/contact/gender}" columns="2" change="onChange2">
+                <RadioButton text="{i18n>male}" key="M" />
+                <RadioButton text="{i18n>female}" key="F" />
+            </RadioButtonGroup>
+
+            <Label text="{i18n>statusInput}" />
+            <CheckBox text="{path: 'mainModel>/contact/active', formatter: '.formatter.activeStatus'}" selected="{mainModel>/contact/active}" change="onChange2" />
         </form:SimpleForm>
 
         <Toolbar>
