@@ -12,15 +12,6 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("project12table.controller.View1table", {
-      formatter: {
-        activeStatus: function (active) {
-          return active ? "Aktif" : "Aktif değil";
-        },
-        genderText: function (gender) {
-          return gender === "M" ? "Kadın" : "Erkek";
-        },
-      },
-
       onInit: function () {
         this.oModel = this.getOwnerComponent().getModel("mainModel");
         this.i18n = this.getOwnerComponent().getModel("i18n");
@@ -126,8 +117,6 @@ sap.ui.define(
               contacts[i].phone = contact.phone;
               contacts[i].birthday = contact.birthday;
               contacts[i].address = contact.address;
-              contacts[i].gender = contact.gender;
-              contacts[i].active = contact.active;
 
               this.oModel.setProperty("/inputEnabled", true);
 
@@ -231,12 +220,6 @@ sap.ui.define(
         } else {
           oInput.setValueState("None");
         }
-      },
-      onChange2: function (oEvent) {
-        var oInput = oEvent.getSource();
-        var sValue = oInput.getValue();
-        var sPath = oInput.getBindingContext("mainModel").getPath();
-        this.getModel("mainModel").setProperty(sPath, sValue);
       },
     });
   }
