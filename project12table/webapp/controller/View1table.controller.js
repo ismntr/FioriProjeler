@@ -12,6 +12,15 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("project12table.controller.View1table", {
+      formatter: {
+        formatActive: function (active) {
+          return active ? "Aktif" : "Pasif";
+        },
+        formatGender: function (gender) {
+          return gender ? "Erkek" : "Kadın";
+        },
+      },
+
       onInit: function () {
         this.oModel = this.getOwnerComponent().getModel("mainModel");
         this.i18n = this.getOwnerComponent().getModel("i18n");
@@ -28,6 +37,7 @@ sap.ui.define(
           birthday: new Date(),
         };
         this.oModel.setProperty("/contact/", acilis);
+        console.log("/contact", this.oModel.getProperty("/contact"));
       },
       onNameSurnameSearch: function (oEvent) {
         var sSearchValue = oEvent.getParameter("value");
@@ -117,6 +127,8 @@ sap.ui.define(
               contacts[i].phone = contact.phone;
               contacts[i].birthday = contact.birthday;
               contacts[i].address = contact.address;
+              contacts[i].gender = contact.gender;
+              contacts[i].active = contact.active;
 
               this.oModel.setProperty("/inputEnabled", true);
 
@@ -220,6 +232,13 @@ sap.ui.define(
         } else {
           oInput.setValueState("None");
         }
+      },
+      onChange2: function (oEvent) {
+        var oInput = oEvent.getSource();
+        var sValue = oInput.getValue();
+
+        var sPath = oInput.getBindingContext("mainModel").getPath();
+        this.getModel("mainModel").setProperty(sPath, sValue);
       },
     });
   }
