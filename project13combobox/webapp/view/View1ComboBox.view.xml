@@ -40,6 +40,12 @@
                 <Column vAlign="Middle" hAlign="Center" width="100%">
                     <Text text="{i18n>addressInput}" />
                 </Column>
+                <Column vAlign="Middle" hAlign="Center" width="20%">
+                    <Text text="{i18n>countryInput}" />
+                </Column>
+                <Column vAlign="Middle" hAlign="Center" width="20%">
+                    <Text text="{i18n>cityInput}" />
+                </Column>
             </columns>
             <items>
                 <ColumnListItem>
@@ -54,6 +60,9 @@
                             state="Success" />
                         <Text text="{mainModel>gender}" />
                         <Text text="{mainModel>address}" />
+                        <Text text="{mainModel>selectedCountry}" />
+                        <Text text="{mainModel>selectedCity}" />
+
                     </cells>
                 </ColumnListItem>
             </items>

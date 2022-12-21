@@ -1,5 +1,10 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
-    xmlns:l="sap.ui.layout" xmlns:f="sap.f">
+<core:FragmentDefinition 
+xmlns="sap.m" 
+xmlns:core="sap.ui.core" 
+xmlns:form="sap.ui.layout.form"
+xmlns:l="sap.ui.layout" 
+xmlns:f="sap.f"
+>
     <Dialog>
         <customHeader>
             <Toolbar>
@@ -53,6 +58,19 @@
                 required="true" valueState="Error" valueStateText="{i18n>enterAddress}"
                 change="onChange" />
 
+            <Label text="{i18n>countryInput}" />
+
+            <ComboBox 
+            items="{ path: 'mainModel>/countries' }">
+                <core:Item key="{mainModel>key}" text="{mainModel>text}"
+                    selectedKey="{mainModel>/contact/selectedCountry}" change="onCountryChange" />
+            </ComboBox>
+
+            <Label text="{i18n>cityInput}" />
+            <ComboBox
+                items="{mainModel>/filteredCities}">
+                <core:Item key="{mainModel>key}" text="{mainModel>text}" selectedKey="{mainModel>/contact/selectedCity}" />
+            </ComboBox>
 
         </form:SimpleForm>
 
