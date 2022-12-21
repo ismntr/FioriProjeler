@@ -43,12 +43,10 @@
 
 
             <Label text="{i18n>genderInput}" />
-                <RadioButtonGroup name="gender" selectedKey="{path: 'mainModel>/contact/gender', formatter: '.formatter.formatGender'}" columns="2"
-                    change="onChange2">
-                    <RadioButton text="{i18n>male}" key="{i18n>male}" />
-                    <RadioButton text="{i18n>female}" key="{i18n>female}" />
-                </RadioButtonGroup>
-
+            <RadioButtonGroup id="GroupGender" select="onGenderSelect" columns="2">
+                <RadioButton text="{i18n>male} " selected="false" />
+                <RadioButton text="{i18n>female}" selected="false" />
+            </RadioButtonGroup>
 
             <Label text="{i18n>addressInput}" />
             <TextArea value="{mainModel>/contact/address}" placeholder="{i18n>address}"

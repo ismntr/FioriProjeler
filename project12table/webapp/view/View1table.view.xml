@@ -53,9 +53,12 @@
                         <ObjectStatus
                             text="{path: 'mainModel>active', formatter: '.formatter.formatActive'}"
                             state="Success" />
-                            <ObjectStatus
-                            text="{path: 'mainModel>active', formatter: '.formatter.formatGender'}"
-                            state="Success" />
+                        <!-- <ObjectStatus
+                            text="{path:
+                        'mainModel>gender', formatter: '.formatter.formatGender'}"
+                            state="Success"
+                        /> -->
+                        <Text text="{mainModel>gender}" />
                         <Text text="{mainModel>address}" />
                     </cells>
                 </ColumnListItem>

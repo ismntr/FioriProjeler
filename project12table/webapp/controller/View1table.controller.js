@@ -236,9 +236,16 @@ sap.ui.define(
       onChange2: function (oEvent) {
         var oInput = oEvent.getSource();
         var sValue = oInput.getValue();
-
         var sPath = oInput.getBindingContext("mainModel").getPath();
         this.getModel("mainModel").setProperty(sPath, sValue);
+      },
+      onGenderSelect: function (oEvent) {
+        var oRadioButtonGroup = oEvent.getSource();
+        var oSelectedButton = oRadioButtonGroup.getSelectedButton();
+        var sValue = oSelectedButton.getText();
+        this.getView()
+          .getModel("mainModel")
+          .setProperty("/contact/gender", sValue);
       },
     });
   }
