@@ -9,7 +9,7 @@
             <Input width="30%" id="nameSurnameInput" placeholder="{i18n>Search}" liveChange="onNameSurnameSearch" />
         </OverflowToolbar>
         <content />
-        <Table id="myTable" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }">
+        <Table id="myTable" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" showSeparators="All" growing="true" items="{ path: 'mainModel>/contacts' }">
             <columns>
                 <Column vAlign="Middle" hAlign="Left" flexible="true" width="30%">
                     <Text text="{i18n>idInput}" />
@@ -47,7 +47,7 @@
             </columns>
             <items>
                 <ColumnListItem>
-                    <cells>
+                    <cells borderColor="black">
                         <ObjectIdentifier text="{mainModel>id}" />
                         <Text text="{mainModel>name}" />
                         <Text text="{mainModel>surname}" />

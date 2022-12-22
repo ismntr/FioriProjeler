@@ -64,8 +64,14 @@ sap.ui.define(
           name: "isim",
           surname: "soyisim",
           phone: "(555)555 55 55",
-          address: "adres 1",
+          address:
+            "Dikmen Caddesi No: 230/D, Dikmen Çankaya / Ankara / Turkey ",
           birthday: new Date(),
+          active: true,
+          gender: "Kadın",
+          selectedCity: "New York City",
+          selectedCountry: "United States",
+          selectedDistrict: "QE",
         };
 
         this.oModel.setProperty("/countries", [
