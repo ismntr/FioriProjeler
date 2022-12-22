@@ -19,6 +19,37 @@ sap.ui.define(
         formatGender: function (gender) {
           return gender ? "Erkek" : "Kadın";
         },
+        formatDistrict: function (district) {
+          switch (district) {
+            case "BR":
+              district = "Brooklyn";
+              break;
+
+            case "MN":
+              district = "Manhattan";
+              break;
+            case "BA":
+              district = "Bay Area";
+              break;
+
+            case "QE":
+              district = "Queens";
+              break;
+
+            case "CT":
+              district = "Castro";
+              break;
+
+            case "MD":
+              district = "Mission District";
+              break;
+
+            default:
+              district = "...";
+              break;
+          }
+          return district;
+        },
       },
 
       onInit: function () {
@@ -51,7 +82,8 @@ sap.ui.define(
             text: "India",
           },
         ]);
-        this.oModel.setProperty("/filteredCities", [
+
+        this.oModel.setProperty("/cities", [
           {
             key: "NYC",
             text: "New York City",
@@ -83,24 +115,94 @@ sap.ui.define(
             country: "IN",
           },
         ]);
+        this.oModel.setProperty("/district", [
+          {
+            key: "BR",
+            text: "Brooklyn",
+            Icon: "sap-icon://building",
+
+            city: "NYC",
+          },
+          {
+            key: "MN",
+            text: "Manhattan",
+            Icon: "sap-icon://building",
+
+            city: "NYC",
+          },
+          {
+            key: "QE",
+            text: "Queens",
+            Icon: "sap-icon://official-service",
+
+            city: "NYC",
+          },
+          {
+            key: "BA",
+            text: "Bay Area",
+            Icon: "sap-icon://home",
+
+            city: "SF",
+          },
+          {
+            key: "CT",
+            text: "Castro",
+            Icon: "sap-icon://factory",
+
+            city: "SF",
+          },
+          {
+            key: "MD",
+            text: "Mission District",
+            Icon: "sap-icon://paper-plane",
+            city: "SF",
+          },
+        ]);
 
         this.oModel.setProperty("/contact/", acilis);
         console.log("/contact", this.oModel.getProperty("/contact"));
       },
-      
-      onCountryChange: function(oEvent) {
-        
-        var sSelectedCountry = oEvent.getParameter("selectedItem").getKey();
-        var oModel = this.getView().getModel("mainModel");
-        var aCities = oModel.getProperty("/cities");
-        var oFilter = new sap.ui.model.Filter("country", sap.ui.model.FilterOperator.EQ, sSelectedCountry);
-        var aFilteredCities = aCities.filter(function(oCity) {
-           return oCity.country === sSelectedCountry;
-        });
-        oModel.setProperty("/filteredCities", aFilteredCities);
-     }, 
 
-     
+      onCountryChange: function (oEvent) {
+        var selectedCountryKey = oEvent.getSource().getSelectedKey();
+        // var cities = this.oModel.getProperty("/cities").filter(function (city) {
+        //   return city.country === selectedCountryKey;
+        // });
+        // this.getView()
+        //   .getModel("mainModel")
+        //   .setProperty("/filteredCities", cities);
+
+        var oBinding = sap.ui.getCore().byId("idCity").getBinding("items");
+        var aFilter = new sap.ui.model.Filter({
+          filters: [
+            new sap.ui.model.Filter(
+              "country",
+              sap.ui.model.FilterOperator.EQ,
+              selectedCountryKey
+            ),
+          ],
+        });
+
+        oBinding.filter(aFilter);
+        sap.ui.getCore().byId("idCity").setSelectedKey();
+      },
+      onCountryCity: function (oEvent) {
+        var selectedCityKey = oEvent.getSource().getSelectedKey();
+        var oBinding = sap.ui.getCore().byId("idDistrict").getBinding("items");
+        var aFilter = new sap.ui.model.Filter({
+          filters: [
+            new sap.ui.model.Filter(
+              "city",
+              sap.ui.model.FilterOperator.EQ,
+              selectedCityKey
+            ),
+          ],
+        });
+
+        oBinding.filter(aFilter);
+        sap.ui.getCore().byId("idDistrict").setSelectedKey();
+      },
+
       onNameSurnameSearch: function (oEvent) {
         var sSearchValue = oEvent.getParameter("value");
         var oBinding = this.byId("myTable").getBinding("items");
@@ -119,7 +221,6 @@ sap.ui.define(
           ],
           and: false,
         });
-
         oBinding.filter(aFilter);
       },
 
@@ -175,7 +276,10 @@ sap.ui.define(
           !contact.surname ||
           !contact.phone ||
           !contact.birthday ||
-          !contact.address
+          !contact.address ||
+          !contact.selectedCountry ||
+          !contact.selectedCity ||
+          !contact.selectedDistrict
         ) {
           this.showMessage(this.i18n.getProperty("inputError"));
           return;
@@ -191,6 +295,9 @@ sap.ui.define(
               contacts[i].address = contact.address;
               contacts[i].gender = contact.gender;
               contacts[i].active = contact.active;
+              contacts[i].selectedCountry = contact.selectedCountry;
+              contacts[i].selectedCity = contact.selectedCity;
+              contacts[i].selectedDistrict = contact.selectedDistrict;
 
               this.oModel.setProperty("/inputEnabled", true);
 

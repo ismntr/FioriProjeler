@@ -1,7 +1,4 @@
-<mvc:View controllerName="project13combobox.controller.View1ComboBox"
-    xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true" xmlns="sap.m" xmlns:form="sap.ui.layout.form" height="100%"
-    xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+<mvc:View controllerName="project13combobox.controller.View1ComboBox" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:form="sap.ui.layout.form" height="100%" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
     <Page id="page" title="{i18n>title}">
         <OverflowToolbar>
             <Button icon="sap-icon://user-edit" text="{i18n>New}" press="onPressNew" enabled="true" />
@@ -9,12 +6,10 @@
             <ToolbarSpacer />
             <Button icon="sap-icon://sort" text="{i18n>Sort}" press="sortById" enabled="true" />
 
-            <Input width="30%" id="nameSurnameInput" placeholder="{i18n>Search}"
-                liveChange="onNameSurnameSearch" />
+            <Input width="30%" id="nameSurnameInput" placeholder="{i18n>Search}" liveChange="onNameSurnameSearch" />
         </OverflowToolbar>
         <content />
-        <Table id="myTable" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete"
-            growing="true" items="{ path: 'mainModel>/contacts' }">
+        <Table id="myTable" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/contacts' }">
             <columns>
                 <Column vAlign="Middle" hAlign="Left" flexible="true" width="30%">
                     <Text text="{i18n>idInput}" />
@@ -46,6 +41,9 @@
                 <Column vAlign="Middle" hAlign="Center" width="20%">
                     <Text text="{i18n>cityInput}" />
                 </Column>
+                <Column vAlign="Middle" hAlign="Center" width="20%">
+                    <Text text="{i18n>districtInput}" />
+                </Column>
             </columns>
             <items>
                 <ColumnListItem>
@@ -55,14 +53,12 @@
                         <Text text="{mainModel>surname}" />
                         <Text text="+90{mainModel>phone}" />
                         <DatePicker dateValue="{mainModel>birthday}" />
-                        <ObjectStatus
-                            text="{path: 'mainModel>active', formatter: '.formatter.formatActive'}"
-                            state="Success" />
+                        <ObjectStatus text="{path: 'mainModel>active', formatter: '.formatter.formatActive'}" state="Success" />
                         <Text text="{mainModel>gender}" />
                         <Text text="{mainModel>address}" />
                         <Text text="{mainModel>selectedCountry}" />
                         <Text text="{mainModel>selectedCity}" />
-
+                        <Text text="{path: 'mainModel>selectedDistrict', formatter: '.formatter.formatDistrict'}" />
                     </cells>
                 </ColumnListItem>
             </items>
