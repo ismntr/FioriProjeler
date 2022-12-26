@@ -24,26 +24,21 @@ sap.ui.define(
             case "BR":
               district = "Brooklyn";
               break;
-
             case "MN":
               district = "Manhattan";
               break;
             case "BA":
               district = "Bay Area";
               break;
-
             case "QE":
               district = "Queens";
               break;
-
             case "CT":
               district = "Castro";
               break;
-
             case "MD":
               district = "Mission District";
               break;
-
             default:
               district = "...";
               break;
