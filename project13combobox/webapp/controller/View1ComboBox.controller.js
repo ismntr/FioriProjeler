@@ -343,7 +343,7 @@ sap.ui.define(
         var contactsAssign = Object.assign({}, contact);
         contacts.push(contactsAssign);
         this.oModel.setProperty("/contacts", contacts);
-        this.onPressShow();
+        // this.onPressShow();
         this.onPressClear();
         this.oModel.setProperty("/inputEnabled", true);
         this.oModel.setProperty("/mode", "SingleSelectMaster");
