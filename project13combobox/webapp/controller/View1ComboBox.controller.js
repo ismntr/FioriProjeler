@@ -225,9 +225,20 @@ sap.ui.define(
         oBinding.filter(aFilter);
       },
 
-      sortById: function (oColumn) {
-        var oSorter = new sap.ui.model.Sorter("id", false);
-        this.byId("myTable").getBinding("items").sort(oSorter);
+      sortCancel: function (oColumn) {
+        this.byId("myTable").getBinding("items").sort(null);
+      },
+      onToggleSort: function (oEvent) {
+        var oToggleButton = oEvent.getSource();
+        var oTable = this.byId("myTable");
+
+        if (oToggleButton.getPressed()) {
+          var oSorter = new sap.ui.model.Sorter("id", false);
+          oTable.getBinding("items").sort(oSorter);
+        } else {
+          var oSorter = new sap.ui.model.Sorter("id", true);
+          oTable.getBinding("items").sort(oSorter);
+        }
       },
 
       onPressNew: function (oEvent) {
