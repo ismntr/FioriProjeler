@@ -73,6 +73,11 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {}
+      },
+      "mainModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {},
+        "preload": false
       }
     },
     "resources": {
@@ -96,9 +101,7 @@
         {
           "name": "RouteView1Promise",
           "pattern": ":?query:",
-          "target": [
-            "TargetView1Promise"
-          ]
+          "target": ["TargetView1Promise"]
         }
       ],
       "targets": {
