@@ -1,0 +1,40 @@
+<mvc:View controllerName="project15orders.controller.View1Orders" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page id="page" title="{}">
+        <content />
+
+        <Table id="idTable" mode="SingleSelectMaster" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/Orders' }" selected="{mainModel>/selectedOrder}">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="Kişiler" level="H2" />
+                    <ToolbarSpacer />
+                    <SearchField width="20%" id="searchField" placeholder="Arama" liveChange=".onSearch" />
+                    <Button text="{i18n>new}" icon="sap-icon://customer-order-entry" press="onPressEdit" />
+                    <Button text="{i18n>clear}" icon="sap-icon://delete" press="onPressClear" />
+                    <Button icon="sap-icon://sort" press="onPressSort" />
+                    <Button icon="sap-icon://filter" press="onPressFilter" />
+                    <Button icon="sap-icon://download" press="onPressDownload" />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="{i18n>customerid}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>employeeid}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>freight}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier text="{mainModel>CustomerID}" />
+                        <Text text="{mainModel>EmployeeID}" />
+                        <Text text="{mainModel>Freight}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

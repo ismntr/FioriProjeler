@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog>
+        <Table id="idTable" mode="SingleSelectMaster" growing="true" selected="{mainModel>/selectedOrder}">
+            <columns>
+                <Column>
+                    <Text text="{i18n>customerid}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>employeeid}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>freight}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier text="{mainModel>/selectedOrder/CustomerID}" />
+                        <Text text="{mainModel>/selectedOrder/EmployeeID}" />
+                        <Text text="{mainModel>/selectedOrder/Freight}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <FlexBox justifyContent="End">
+            <Button type="Emphasized" text="Close" press="onPress" />
+        </FlexBox>
+    </Dialog>
+</core:FragmentDefinition>
