@@ -18,9 +18,7 @@ sap.ui.define(
         this.oModel = this.getOwnerComponent().getModel("mainModel");
         var that = this;
         sap.ui.core.BusyIndicator.show(0);
-        this.getOwnerComponent()
-          .getModel()
-          .read("/Orders", {
+        this.getOwnerComponent().getModel().read("/Orders", {
             success: function (oData) {
               that.oModel.setProperty("/Orders", oData.results);
               sap.ui.core.BusyIndicator.hide(0);
