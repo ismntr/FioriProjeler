@@ -16,59 +16,87 @@
         <content />
 
         <Table id="myTable" mode="{mainModel>/mode}" select="onPressSelect" delete="handleDelete"
-            showSeparators="All" growing="true" items="{ path: 'mainModel>/contacts' }">
+            showSeparators="All" growing="true" items="{ path: 'mainModel>/Orders' }">
             <columns>
-                <Column vAlign="Middle" hAlign="Left" flexible="true" width="30%">
-                    <Text text="{i18n>idInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="5%">
+                    <Text text="{i18n>OrderID}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Left" width="30%">
-                    <Text text="{i18n>nameInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="6%" >
+                    <Text text="{i18n>CustomerID}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Left" width="30%">
-                    <Text text="{i18n>surnameInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="4%">
+                    <Text text="{i18n>EmployeeID}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="40%">
-                    <Text text="{i18n>phoneInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="10%">
+                    <Text text="{i18n>OrderDate}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="30%">
-                    <Text text="{i18n>birthdayInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="10%">
+                    <Text text="{i18n>RequiredDate}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="20%">
-                    <Text text="{i18n>statusInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="10%">
+                    <Text text="{i18n>ShippedDate}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="20%">
-                    <Text text="{i18n>genderInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="4%">
+                    <Text text="{i18n>ShipVia}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="100%">
-                    <Text text="{i18n>addressInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="7%">
+                    <Text text="{i18n>Freight}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="20%">
-                    <Text text="{i18n>countryInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="10%">
+                    <Text text="{i18n>ShipName}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="20%">
-                    <Text text="{i18n>cityInput}" />
+                <Column vAlign="Middle" hAlign="Center" width="15%">
+                    <Text text="{i18n>ShipAddress}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="20%">
-                    <Text text="{i18n>districtInput}" />
+                <Column  vAlign="Middle" hAlign="Center" width="6%">
+                    <Text text="{i18n>ShipCity}" />
+                </Column>
+                <Column  vAlign="Middle" hAlign="Center" width="6%">
+                    <Text text="{i18n>ShipRegion}" />
+                </Column>
+                <Column  vAlign="Middle" hAlign="Center" width="6%">
+                    <Text text="{i18n>ShipPostalCode}" />
+                </Column>
+                <Column  vAlign="Middle" hAlign="Center" width="6%">
+                    <Text text="{i18n>ShipCountry}" />
                 </Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells borderColor="black">
-                        <ObjectIdentifier text="{mainModel>id}" />
-                        <Text text="{mainModel>name}" />
-                        <Text text="{mainModel>surname}" />
-                        <Text text="+90{mainModel>phone}" />
-                        <DatePicker dateValue="{mainModel>birthday}" />
-                        <ObjectStatus
-                            text="{path: 'mainModel>active', formatter: '.formatter.formatActive'}"
-                            state="Success" />
-                        <Text text="{mainModel>gender}" />
-                        <Text text="{mainModel>address}" />
-                        <Text text="{mainModel>selectedCountry}" />
-                        <Text text="{mainModel>selectedCity}" />
-                        <Text
-                            text="{path: 'mainModel>selectedDistrict', formatter: '.formatter.formatDistrict'}" />
+                        <ObjectIdentifier text="{mainModel>OrderID}" />
+                        <Text text="{mainModel>CustomerID}" />
+                        <Text text="{mainModel>EmployeeID}" />
+                            <Text text="{
+                                path: 'mainModel>OrderDate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    style: 'long'
+                                }
+                            }" />
+                            <Text text="{
+                                path: 'mainModel>RequiredDate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    style: 'long'
+                                }
+                            }" />
+                            <Text text="{
+                                path: 'mainModel>ShippedDate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    style: 'long'
+                                }
+                            }" />
+
+                        <Text text="{mainModel>ShipVia}" />
+                        <Text text="{mainModel>Freight}" />
+                        <Text text="{mainModel>ShipName}" />
+                        <Text text="{mainModel>ShipAddress}" />
+                        <Text text="{mainModel>ShipCity}" />
+                        <Text text="{mainModel>ShipRegion}" />
+                        <Text text="{mainModel>ShipPostalCode}" />
+                        <Text text="{mainModel>ShipCountry}" />
                     </cells>
                 </ColumnListItem>
             </items>
