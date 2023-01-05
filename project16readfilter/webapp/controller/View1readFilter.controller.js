@@ -37,23 +37,18 @@ sap.ui.define(
             },
           });
       },
-      onNameSurnameSearch: function (oEvent) {
+      onSearch: function (oEvent) {
         var sSearchValue = oEvent.getParameter("value");
         var oBinding = this.byId("myTable").getBinding("items");
         var aFilter = new sap.ui.model.Filter({
           filters: [
             new sap.ui.model.Filter(
-              "CustomerID",
-              sap.ui.model.FilterOperator.Contains,
-              sSearchValue
-            ),
-            new sap.ui.model.Filter(
-              "EmployeeID",
+              "OrderID",
               sap.ui.model.FilterOperator.Contains,
               sSearchValue
             ),
           ],
-          and: false,
+       
         });
         oBinding.filter(aFilter);
       },
@@ -144,6 +139,7 @@ sap.ui.define(
 
             ],
             success: function (oData) {
+              console.log(oData.results);
               that.oModel.setProperty("/Order", oData.results);
               sap.ui.core.BusyIndicator.hide(0);
             },

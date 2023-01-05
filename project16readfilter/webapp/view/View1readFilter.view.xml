@@ -4,14 +4,14 @@
     xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
     <Page id="page" title="{i18n>title}">
         <OverflowToolbar>
-            <Button icon="sap-icon://user-edit" text="{i18n>New}" press="onPressNew" enabled="true" />
+            <Button icon="sap-icon://user-edit" text="{i18n>Show}" press="onPressNew" enabled="true" />
             <Button icon="sap-icon://delete" text="{i18n>Delete}" press="delete" enabled="true" />
             <ToolbarSpacer />
             <ToggleButton icon="sap-icon://sort" text="{i18n>Sort}" press="onToggleSort" />
             <Button icon="sap-icon://sorting-ranking" text="{i18n>SortCancel}" press="sortCancel"
                 enabled="true" />
             <Input width="30%" id="nameSurnameInput" placeholder="{i18n>Search}"
-                liveChange="onNameSurnameSearch" />
+                liveChange="onSearch" />
         </OverflowToolbar>
         <content />
 
