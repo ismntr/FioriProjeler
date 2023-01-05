@@ -4,7 +4,7 @@
         <customHeader>
             <Toolbar>
                 <HBox width="100%" alignItems="Center" justifyContent="SpaceBetween">
-                    <Text />
+                    <Title text="{i18n>order}" level="H2" />
                     <Button icon="sap-icon://decline" press="onPressCloseNewContact" />
                 </HBox>
             </Toolbar>
@@ -63,7 +63,7 @@
             <Text text="{mainModel>/order/ShipCountry}" />
         </form:SimpleForm>
 
-        <Table id="idTable" mode="SingleSelectMaster" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/Order_Details' }" selected="{mainModel>/selectedOrder}">
+        <Table id="idTable" mode="SingleSelectMaster" select="onPressSelect" delete="handleDelete" growing="true" width="auto" items="{ path: 'mainModel>/Order' }" selected="{mainModel>/selectedOrder}">
             <headerToolbar>
                 <OverflowToolbar>
                     <Title text="{i18n>orders}" level="H2" />
@@ -81,6 +81,12 @@
                 <Column>
                     <Text text="{i18n>UnitPrice}" />
                 </Column>
+                <Column>
+                    <Text text="{i18n>Quantity}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>Discount}" />
+                </Column>
             </columns>
             <items>
                 <ColumnListItem>
@@ -88,6 +94,9 @@
                         <ObjectIdentifier text="{mainModel>OrderID}" />
                         <Text text="{mainModel>ProductID}" />
                         <Text text="{mainModel>UnitPrice}" />
+                        <Text text="{mainModel>Quantity}" />
+                        <Text text="{mainModel>Discount}" />
+
                     </cells>
                 </ColumnListItem>
             </items>

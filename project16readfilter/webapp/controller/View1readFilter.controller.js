@@ -12,162 +12,22 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("project16readfilter.controller.View1readFilter", {
-      formatter: {
-/*         formatActive: function (active) {
-          return active ? "Aktif" : "Pasif";
-        },
-        formatGender: function (gender) {
-          return gender ? "Erkek" : "Kadın";
-        },
-        formatDistrict: function (district) {
-          switch (district) {
-            case "BR":
-              district = "Brooklyn";
-              break;
-            case "MN":
-              district = "Manhattan";
-              break;
-            case "BA":
-              district = "Bay Area";
-              break;
-            case "QE":
-              district = "Queens";
-              break;
-            case "CT":
-              district = "Castro";
-              break;
-            case "MD":
-              district = "Mission District";
-              break;
-            default:
-              district = "...";
-              break;
-          }
-          return district;
-        }, */
-      },
+      formatter: {},
 
       onInit: function () {
         this.oModel = this.getOwnerComponent().getModel("mainModel");
+        this.oDataModel = this.getOwnerComponent().getModel();
+
         this.i18n = this.getOwnerComponent().getModel("i18n");
         this.oModel.setProperty("/mode", "SingleSelectMaster");
         this.oModel.setProperty("/contact", {});
         this.oModel.setProperty("/contacts", []);
-/* 
-        var acilis = {
-          id: "11111111111",
-          name: "isim",
-          surname: "soyisim",
-          phone: "(555)555 55 55",
-          address:
-            "Dikmen Caddesi No: 230/D, Dikmen Çankaya / Ankara / Turkey ",
-          birthday: new Date(),
-          active: true,
-          gender: "Kadın",
-          selectedCity: "New York City",
-          selectedCountry: "United States",
-          selectedDistrict: "QE",
-        };
 
-        this.oModel.setProperty("/countries", [
-          {
-            key: "US",
-            text: "United States",
-          },
-          {
-            key: "CN",
-            text: "China",
-          },
-          {
-            key: "IN",
-            text: "India",
-          },
-        ]);
-
-        this.oModel.setProperty("/cities", [
-          {
-            key: "NYC",
-            text: "New York City",
-            country: "US",
-          },
-          {
-            key: "SF",
-            text: "San Francisco",
-            country: "US",
-          },
-          {
-            key: "SH",
-            text: "Shanghai",
-            country: "CN",
-          },
-          {
-            key: "BJ",
-            text: "Beijing",
-            country: "CN",
-          },
-          {
-            key: "MUM",
-            text: "Mumbai",
-            country: "IN",
-          },
-          {
-            key: "DEL",
-            text: "Delhi",
-            country: "IN",
-          },
-        ]);
-        this.oModel.setProperty("/district", [
-          {
-            key: "BR",
-            text: "Brooklyn",
-            Icon: "sap-icon://building",
-
-            city: "NYC",
-          },
-          {
-            key: "MN",
-            text: "Manhattan",
-            Icon: "sap-icon://building",
-
-            city: "NYC",
-          },
-          {
-            key: "QE",
-            text: "Queens",
-            Icon: "sap-icon://official-service",
-
-            city: "NYC",
-          },
-          {
-            key: "BA",
-            text: "Bay Area",
-            Icon: "sap-icon://home",
-
-            city: "SF",
-          },
-          {
-            key: "CT",
-            text: "Castro",
-            Icon: "sap-icon://factory",
-
-            city: "SF",
-          },
-          {
-            key: "MD",
-            text: "Mission District",
-            Icon: "sap-icon://paper-plane",
-            city: "SF",
-          },
-        ]);
-
-        this.oModel.setProperty("/contact/", acilis); 
-        console.log("/contact", this.oModel.getProperty("/contact"));*/
-
-        this.oDataModel = this.getOwnerComponent().getModel();
-        this.oModel = this.getOwnerComponent().getModel("mainModel");
         var that = this;
         sap.ui.core.BusyIndicator.show(0);
-        this.getOwnerComponent().getModel().read("/Orders", {
+        this.getOwnerComponent()
+          .getModel()
+          .read("/Orders", {
             success: function (oData) {
               that.oModel.setProperty("/Orders", oData.results);
               sap.ui.core.BusyIndicator.hide(0);
@@ -176,35 +36,19 @@ sap.ui.define(
               debugger;
             },
           });
-
-          this.getOwnerComponent().getModel().read("/Order_Details", {
-            success: function (oData) {
-              that.oModel.setProperty("/Order_Details", oData.results);
-              sap.ui.core.BusyIndicator.hide(0);
-            },
-            error: function (oResponse) {
-              debugger;
-            },
-          });
-
-
       },
-
-
- 
-
       onNameSurnameSearch: function (oEvent) {
         var sSearchValue = oEvent.getParameter("value");
         var oBinding = this.byId("myTable").getBinding("items");
         var aFilter = new sap.ui.model.Filter({
           filters: [
             new sap.ui.model.Filter(
-              "name",
+              "CustomerID",
               sap.ui.model.FilterOperator.Contains,
               sSearchValue
             ),
             new sap.ui.model.Filter(
-              "surname",
+              "EmployeeID",
               sap.ui.model.FilterOperator.Contains,
               sSearchValue
             ),
@@ -251,13 +95,13 @@ sap.ui.define(
       },
 
       handleDelete: function (oEvent) {
-        var contacts = this.oModel.getProperty("/contacts"),
+        var contacts = this.oModel.getProperty("/Orders"),
           sPath = oEvent.getParameter("listItem").getBindingContextPath(),
           oItem = this.oModel.getProperty(sPath),
           indexDelete = contacts.indexOf(oItem);
         contacts.splice(indexDelete, 1);
 
-        this.oModel.setProperty("/contacts", contacts);
+        this.oModel.setProperty("/Orders", contacts);
       },
       _getDialogContact: function (fragName) {
         if (!this._oDialogContact) {
@@ -266,7 +110,6 @@ sap.ui.define(
         }
         return this._oDialogContact;
       },
-
 
       showMessage: function (message) {
         MessageBox.error(message);
@@ -277,9 +120,37 @@ sap.ui.define(
         var selectedItem = this.oModel.getProperty(selectedPath);
         var ItemAssign = Object.assign({}, selectedItem);
         this.oModel.setProperty("/order", ItemAssign);
+        
+        var orderId = selectedItem.OrderID;
+        this.get(orderId);
+      
+
         this.oModel.setProperty("/mode", "SingleSelectMaster");
         this.inputIdDisabled();
         this.onPressNew();
+      },
+      get: function (orderId) {
+        this.oDataModel = this.getOwnerComponent().getModel();
+        this.oModel = this.getOwnerComponent().getModel("mainModel");
+        var that = this;
+        sap.ui.core.BusyIndicator.show(0);
+
+        this.getOwnerComponent()
+          .getModel()
+          .read("/Order_Details", {
+            filters: [
+              new sap.ui.model.Filter("OrderID", "EQ", orderId),
+              // new sap.ui.model.Filter("OrderID", "EQ", productId)
+
+            ],
+            success: function (oData) {
+              that.oModel.setProperty("/Order", oData.results);
+              sap.ui.core.BusyIndicator.hide(0);
+            },
+            error: function (oResponse) {
+              debugger;
+            },
+          });
       },
 
       inputIdDisabled: function () {
