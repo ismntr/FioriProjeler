@@ -38,14 +38,15 @@ sap.ui.define(
           });
       },
       onSearch: function (oEvent) {
+
+
+
         var sSearchValue = oEvent.getParameter("value");
         var oBinding = this.byId("myTable").getBinding("items");
         var aFilter = new sap.ui.model.Filter({
           filters: [
             new sap.ui.model.Filter(
-              "OrderID",
-              sap.ui.model.FilterOperator.Contains,
-              sSearchValue
+              "OrderID", sap.ui.model.FilterOperator.Contains, sSearchValue
             ),
           ],
        
