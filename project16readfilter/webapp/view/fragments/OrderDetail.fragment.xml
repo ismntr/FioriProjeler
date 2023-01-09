@@ -1,115 +1,105 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
-    xmlns:l="sap.ui.layout" xmlns:f="sap.f">
-        <Dialog width="50%">
-            <customHeader>
-                <Toolbar>
-                    <HBox width="100%" alignItems="Center" justifyContent="SpaceBetween">
-                        <Title text="{i18n>order}" level="H2" />
-                        <Button icon="sap-icon://decline" press="onPressCloseNewContact" />
-                    </HBox>
-                </Toolbar>
-            </customHeader>
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:f="sap.f">
+    <Dialog contentWidth="50%" contentHeight="50%" resizable="true" draggable="true">
+        <customHeader>
+            <Toolbar>
+                <HBox width="100%" alignItems="Center" justifyContent="SpaceBetween">
+                    <Title text="{i18n>order}" level="H2" />
+                    <Button icon="sap-icon://decline" press="onPressCloseNewContact" />
+                </HBox>
+            </Toolbar>
+        </customHeader>
 
-
-            <form:SimpleForm>
-                <Label text="{i18n>OrderID}" />
-                <ObjectIdentifier text="{mainModel>/order/OrderID}" />
-                <Label text="{i18n>CustomerID}" />
-                <Text text="{mainModel>/order/CustomerID}" />
-                <Label text="{i18n>EmployeeID}" />
-                <Text text="{mainModel>/order/EmployeeID}" />
-                <Label text="{i18n>OrderDate}" />
-                <Text
-                    text="{
+        <form:SimpleForm width="50%">
+            <Label text="{i18n>OrderID}" />
+            <ObjectIdentifier text="{mainModel>/order/OrderID}" />
+            <Label text="{i18n>CustomerID}" />
+            <Text text="{mainModel>/order/CustomerID}" />
+            <Label text="{i18n>EmployeeID}" />
+            <Text text="{mainModel>/order/EmployeeID}" />
+            <Label text="{i18n>OrderDate}" />
+            <Text text="{
                             path: 'mainModel>/order/OrderDate',
                             type: 'sap.ui.model.type.Date',
                             formatOptions: {
                                 style: 'long'
                             }
                         }" />
-                <Label text="{i18n>RequiredDate}" />
-                <Text
-                    text="{
+            <Label text="{i18n>RequiredDate}" />
+            <Text text="{
                             path: 'mainModel>/order/RequiredDate',
                             type: 'sap.ui.model.type.Date',
                             formatOptions: {
                                 style: 'long'
                             }
                         }" />
-                <Label text="{i18n>ShippedDate}" />
-                <Text
-                    text="{
+            <Label text="{i18n>ShippedDate}" />
+            <Text
+                text="{
                                 path: 'mainModel>/order/ShippedDate',
                                 type: 'sap.ui.model.type.Date',
                                 formatOptions: {
                                     style: 'long'
                                 }
-                            }" />
-                <Label text="{i18n>ShipVia}" />
-                <Text text="{mainModel>/order/ShipVia}" />
-                <Label text="{i18n>Freight}" />
-                <Text text="{mainModel>/order/Freight}" />
-                <Label text="{i18n>ShipName}" />
-                <Text text="{mainModel>/order/ShipName}" />
-                <Label text="{i18n>ShipAddress}" />
-                <Text text="{mainModel>/order/ShipAddress}" />
-                <Label text="{i18n>ShipCity}" />
-                <Text text="{mainModel>/order/ShipCity}" />
-                <Label text="{i18n>ShipRegion}" />
-                <Text text="{mainModel>/order/ShipRegion}" />
-                <Label text="{i18n>ShipPostalCode}" />
-                <Text text="{mainModel>/order/ShipPostalCode}" />
-                <Label text="{i18n>ShipCountry}" />
-                <Text text="{mainModel>/order/ShipCountry}" />
-            </form:SimpleForm>
+                            }"
+            />
+            <Label text="{i18n>ShipVia}" />
+            <Text text="{mainModel>/order/ShipVia}" />
+            <Label text="{i18n>Freight}" />
+            <Text text="{mainModel>/order/Freight}" />
+            <Label text="{i18n>ShipName}" />
+            <Text text="{mainModel>/order/ShipName}" />
+            <Label text="{i18n>ShipAddress}" />
+            <Text text="{mainModel>/order/ShipAddress}" />
+            <Label text="{i18n>ShipCity}" />
+            <Text text="{mainModel>/order/ShipCity}" />
+            <Label text="{i18n>ShipRegion}" />
+            <Text text="{mainModel>/order/ShipRegion}" />
+            <Label text="{i18n>ShipPostalCode}" />
+            <Text text="{mainModel>/order/ShipPostalCode}" />
+            <Label text="{i18n>ShipCountry}" />
+            <Text text="{mainModel>/order/ShipCountry}" />
+        </form:SimpleForm>
 
-            <Table id="idTable" mode="SingleSelectMaster" select="onPressSelect"
-                delete="handleDelete" growing="true" items="{ path: 'mainModel>/Order' }"
-                selected="{mainModel>/selectedOrder}">
-                <headerToolbar>
-                    <OverflowToolbar>
-                        <Title text="{i18n>orders}" level="H2" />
-                        <ToolbarSpacer />
+        <Table id="idTable" mode="SingleSelectMaster" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/Order' }" selected="{mainModel>/selectedOrder}">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="{i18n>orders}" level="H2" />
+                    <ToolbarSpacer />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="{i18n>OrderID}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>ProductID}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>UnitPrice}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>Quantity}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>Discount}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier text="{mainModel>OrderID}" />
+                        <Text text="{mainModel>ProductID}" />
+                        <Text text="{mainModel>UnitPrice}" />
+                        <Text text="{mainModel>Quantity}" />
+                        <Text text="{mainModel>Discount}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
 
-                    </OverflowToolbar>
-                </headerToolbar>
-                <columns>
-                    <Column>
-                        <Text text="{i18n>OrderID}" />
-                    </Column>
-                    <Column>
-                        <Text text="{i18n>ProductID}" />
-                    </Column>
-                    <Column>
-                        <Text text="{i18n>UnitPrice}" />
-                    </Column>
-                    <Column>
-                        <Text text="{i18n>Quantity}" />
-                    </Column>
-                    <Column>
-                        <Text text="{i18n>Discount}" />
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem>
-                        <cells>
-                            <ObjectIdentifier text="{mainModel>OrderID}" />
-                            <Text text="{mainModel>ProductID}" />
-                            <Text text="{mainModel>UnitPrice}" />
-                            <Text text="{mainModel>Quantity}" />
-                            <Text text="{mainModel>Discount}" />
-
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
-
-            <beginButton>
-
-            </beginButton>
-            <endButton>
-                <Button icon="sap-icon://decline" text="{i18n>Cancel}" type="Reject"
-                    press="onPressCloseNewContact" />
-            </endButton>
-        </Dialog>
+        <beginButton />
+        <endButton>
+            <Button icon="sap-icon://decline" text="{i18n>Cancel}" type="Reject" press="onPressCloseNewContact" />
+        </endButton>
+    </Dialog>
 </core:FragmentDefinition>
