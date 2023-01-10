@@ -21,43 +21,43 @@
                 <Column vAlign="Middle" hAlign="Center" width="5%">
                     <Text text="{i18n>OrderID}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="6%" >
+                <Column vAlign="Middle" hAlign="Center" width="6%">
                     <Text text="{i18n>CustomerID}" />
                 </Column>
                 <Column vAlign="Middle" hAlign="Center" width="4%">
                     <Text text="{i18n>EmployeeID}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="10%">
+<!--                 <Column vAlign="Middle" hAlign="Center" width="10%">
                     <Text text="{i18n>OrderDate}" />
                 </Column>
                 <Column vAlign="Middle" hAlign="Center" width="10%">
                     <Text text="{i18n>RequiredDate}" />
                 </Column>
                 <Column vAlign="Middle" hAlign="Center" width="10%">
-                    <Text text="{i18n>ShippedDate}" />
-                </Column>
+                    <Text text="{i18n>ShippedDate}" /> 
+                </Column> -->
                 <Column vAlign="Middle" hAlign="Center" width="4%">
                     <Text text="{i18n>ShipVia}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="7%">
+<!--                 <Column vAlign="Middle" hAlign="Center" width="7%">
                     <Text text="{i18n>Freight}" />
-                </Column>
-                <Column vAlign="Middle" hAlign="Center" width="10%">
+                </Column> -->
+                <Column vAlign="Middle"  width="10%">
                     <Text text="{i18n>ShipName}" />
                 </Column>
-                <Column vAlign="Middle" hAlign="Center" width="15%">
+                <Column vAlign="Middle" width="15%">
                     <Text text="{i18n>ShipAddress}" />
                 </Column>
-                <Column  vAlign="Middle" hAlign="Center" width="6%">
+                <Column vAlign="Middle"  width="6%">
                     <Text text="{i18n>ShipCity}" />
                 </Column>
-                <Column  vAlign="Middle" hAlign="Center" width="6%">
+                <Column vAlign="Middle"  width="6%">
                     <Text text="{i18n>ShipRegion}" />
                 </Column>
-                <Column  vAlign="Middle" hAlign="Center" width="6%">
+                <Column vAlign="Middle"  width="6%">
                     <Text text="{i18n>ShipPostalCode}" />
                 </Column>
-                <Column  vAlign="Middle" hAlign="Center" width="6%">
+                <Column vAlign="Middle" hAlign="Center" width="6%">
                     <Text text="{i18n>ShipCountry}" />
                 </Column>
             </columns>
@@ -67,30 +67,40 @@
                         <ObjectIdentifier text="{mainModel>OrderID}" />
                         <Text text="{mainModel>CustomerID}" />
                         <Text text="{mainModel>EmployeeID}" />
-                            <Text text="{
-                                path: 'mainModel>OrderDate',
-                                type: 'sap.ui.model.type.Date',
+                        <!--                             <Text text="{
+                                path:
+                        'mainModel>OrderDate',
+                                type:
+                        'sap.ui.model.type.Date',
                                 formatOptions: {
-                                    style: 'long'
+                        style: 'long'
                                 }
-                            }" />
+                            }"
+                        />
                             <Text text="{
-                                path: 'mainModel>RequiredDate',
-                                type: 'sap.ui.model.type.Date',
+                                path:
+                        'mainModel>RequiredDate',
+                                type:
+                        'sap.ui.model.type.Date',
                                 formatOptions: {
-                                    style: 'long'
+                        style: 'long'
                                 }
-                            }" />
+                            }"
+                        />
                             <Text text="{
-                                path: 'mainModel>ShippedDate',
-                                type: 'sap.ui.model.type.Date',
+                                path:
+                        'mainModel>ShippedDate',
+                                type:
+                        'sap.ui.model.type.Date',
                                 formatOptions: {
-                                    style: 'long'
+                        style: 'long'
                                 }
-                            }" />
+                            }"
+                        /> -->
 
                         <Text text="{mainModel>ShipVia}" />
-                        <Text text="{mainModel>Freight}" />
+                        <!--                         <Text text="{mainModel>Freight}" />
+ -->
                         <Text text="{mainModel>ShipName}" />
                         <Text text="{mainModel>ShipAddress}" />
                         <Text text="{mainModel>ShipCity}" />

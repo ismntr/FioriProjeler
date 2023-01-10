@@ -38,20 +38,52 @@ sap.ui.define(
           });
       },
       onSearch: function (oEvent) {
-
-
-
-        var sSearchValue = oEvent.getParameter("value");
-        var oBinding = this.byId("myTable").getBinding("items");
-        var aFilter = new sap.ui.model.Filter({
+        var sValue = oEvent.getParameter("newValue");
+        var oTable = this.byId("myTable");
+        var oBinding = oTable.getBinding("items");
+        var aFilters = new sap.ui.model.Filter({
           filters: [
             new sap.ui.model.Filter(
-              "OrderID", sap.ui.model.FilterOperator.Contains, sSearchValue
+              "CustomerID",
+              sap.ui.model.FilterOperator.Contains,
+              sValue
+            ),
+            
+            new sap.ui.model.Filter(
+              "ShipName",
+              sap.ui.model.FilterOperator.Contains,
+              sValue
+            ),
+            new sap.ui.model.Filter(
+              "ShipAddress",
+              sap.ui.model.FilterOperator.Contains,
+              sValue
+            ),
+            new sap.ui.model.Filter(
+              "ShipCity",
+              sap.ui.model.FilterOperator.Contains,
+              sValue
+            ),
+
+            new sap.ui.model.Filter(
+              "ShipRegion",
+              sap.ui.model.FilterOperator.Contains,
+              sValue
+            ),
+            new sap.ui.model.Filter(
+              "ShipPostalCode",
+              sap.ui.model.FilterOperator.Contains,
+              sValue
+            ),
+            new sap.ui.model.Filter(
+              "ShipCountry",
+              sap.ui.model.FilterOperator.Contains,
+              sValue
             ),
           ],
-       
+          or: true,
         });
-        oBinding.filter(aFilter);
+        oBinding.filter(aFilters);
       },
 
       sortCancel: function (oColumn) {
@@ -116,10 +148,9 @@ sap.ui.define(
         var selectedItem = this.oModel.getProperty(selectedPath);
         var ItemAssign = Object.assign({}, selectedItem);
         this.oModel.setProperty("/order", ItemAssign);
-        
+
         var orderId = selectedItem.OrderID;
         this.get(orderId);
-      
 
         this.oModel.setProperty("/mode", "SingleSelectMaster");
         this.inputIdDisabled();
@@ -137,7 +168,6 @@ sap.ui.define(
             filters: [
               new sap.ui.model.Filter("OrderID", "EQ", orderId),
               // new sap.ui.model.Filter("OrderID", "EQ", productId)
-
             ],
             success: function (oData) {
               console.log(oData.results);
