@@ -60,7 +60,7 @@
             <Text text="{mainModel>/order/ShipCountry}" />
         </form:SimpleForm>
 
-        <Table id="idTable" mode="SingleSelectMaster" select="onPressSelect" delete="handleDelete" growing="true" items="{ path: 'mainModel>/Order' }" selected="{mainModel>/selectedOrder}">
+        <Table id="idTable" mode="SingleSelectMaster" delete="handleDelete" growing="true" items="{ path: 'mainModel>/Order' }" selected="{mainModel>/selectedOrder}">
             <headerToolbar>
                 <OverflowToolbar>
                     <Title text="{i18n>orders}" level="H2" />
