@@ -1,0 +1,42 @@
+<mvc:View controllerName="project17person.controller.person"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <Panel width="50%" class="sapUiSmallMargin">
+            <content>
+                <Label text="{i18n>DateLabel}" labelFor="DatePicker" />
+                    <DatePicker
+                    enabled="false"
+                    id="DatePicker"
+                    value="2015-11-23"
+                    showCurrentDateButton="true"
+                    change="handleChange"
+                    />
+                    
+            </content>
+        </Panel>
+        <Panel width="50%" class="sapUiSmallMargin">
+            <content>
+                <Label text="{i18n>Personel}" labelFor="Personel" />
+                <Input   enabled="false" id="Personel" value="İsmet"/>
+            </content>
+        </Panel>
+        
+        <Panel width="auto" class="sapUiSmallMargin">
+            <content>
+                <Label text="{i18n>WorkPlaned}" labelFor="WorkPlaned" />
+                
+                <TextArea  id="WorkPlaned"  growing="true" width="100%" value=""  />
+            </content>
+        </Panel>
+
+        <Panel  class="sapUiSmallMargin">
+            <content>
+                <Label text="{i18n>WorkDone}" labelFor="WorkDone" />
+                <TextArea   id="WorkDone" growing="true" width="100%" value=""  />
+            </content>
+        </Panel>
+
+        <content />
+    </Page>
+</mvc:View>
