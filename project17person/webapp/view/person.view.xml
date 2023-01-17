@@ -8,9 +8,10 @@
                     <DatePicker
                     enabled="false"
                     id="DatePicker"
-                    value="2015-11-23"
+                    value="{mainModel>/Detail/Tarih}"
                     showCurrentDateButton="true"
                     change="handleChange"
+                    editable="false"
                     />
                     
             </content>
@@ -18,7 +19,7 @@
         <Panel width="50%" class="sapUiSmallMargin">
             <content>
                 <Label text="{i18n>Personel}" labelFor="Personel" />
-                <Input   enabled="false" id="Personel" value="İsmet"/>
+                <Input   enabled="false" id="Personel"  value="{mainModel>/Detail/Ename}"/>
             </content>
         </Panel>
         
@@ -26,14 +27,14 @@
             <content>
                 <Label text="{i18n>WorkPlaned}" labelFor="WorkPlaned" />
                 
-                <TextArea  id="WorkPlaned"  growing="true" width="100%" value=""  />
+                <TextArea  id="WorkPlaned"  growing="true" width="100%"  value="{mainModel>/Detail/Works}"  />
             </content>
         </Panel>
 
         <Panel  class="sapUiSmallMargin">
             <content>
                 <Label text="{i18n>WorkDone}" labelFor="WorkDone" />
-                <TextArea   id="WorkDone" growing="true" width="100%" value=""  />
+                <TextArea   id="WorkDone" growing="true" width="100%" value="{mainModel>/Detail/YWorks}"  />
             </content>
         </Panel>
 

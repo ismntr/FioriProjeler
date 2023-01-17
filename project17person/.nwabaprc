@@ -1,0 +1,11 @@
+{
+    "base": "./dist",
+    "conn_server": "http://s4hana.ekomera.local:8000/",
+    "conn_client" : "200",
+    "conn_user": "d_erdogan",
+    "conn_password": "Dev.707309",
+    "abap_package": "ZFIORI",
+    "abap_bsp": "ZFIORI_BSP_001",
+    "abap_transport": "E4TK901425",
+    "abap_bsp_text": "Personel Uzaktan Calisma"
+}
