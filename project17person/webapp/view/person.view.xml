@@ -39,5 +39,13 @@
         </Panel>
 
         <content />
+        <footer>
+			<OverflowToolbar>
+				<Button text="{i18n>Work}" type="Accept" width="15%"   press=".onCalis"  />
+				<Button text="{i18n>WorkFinish}" type="Reject"  width="15%"  press=".onCalis"  />
+                    <ToolbarSpacer/>
+				<Button text="{i18n>Update}" type="Emphasized"  width="15%"  press=".onCalis"  />
+			</OverflowToolbar>
+		</footer>
     </Page>
 </mvc:View>

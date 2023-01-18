@@ -32,11 +32,12 @@
             </EntityType>
             <EntityType Name="PersonelUzaktanCalisma" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="IvUname"/>
+                    <PropertyRef Name="Formn"/>
                 </Key>
                 <Property Name="EsVeri" Type="ZENT_PERS_UZAKTAN_CALIS_SRV.EsVeri" Nullable="false"/>
                 <Property Name="EsReturn" Type="ZENT_PERS_UZAKTAN_CALIS_SRV.EsReturn" Nullable="false"/>
-                <Property Name="IvUname" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Kullanıcı Adı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Formn" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Form Numarası" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvUname" Type="Edm.String" sap:unicode="false" sap:label="Kullanıcı Adı" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="UserId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Personel No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="EventTime" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="EventTime" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Works" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Planlanan İşler" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
