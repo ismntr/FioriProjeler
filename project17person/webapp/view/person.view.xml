@@ -9,6 +9,7 @@
                     enabled="false"
                     id="DatePicker"
                     value="{mainModel>/Detail/Tarih}"
+                    valueFormat="yyyy-MM-dd"
                     showCurrentDateButton="true"
                     change="handleChange"
                     editable="false"
@@ -41,8 +42,8 @@
         <content />
         <footer>
 			<OverflowToolbar>
-				<Button text="{i18n>Work}" type="Accept" width="15%"   press=".onCalis"  />
-				<Button text="{i18n>WorkFinish}" type="Reject"  width="15%"  press=".onCalis"  />
+				<Button id="Work" text="{i18n>Work}" type="Accept" width="15%"   press=".onCalis"  />
+				<Button id="WorkFinish" text="{i18n>WorkFinish}" type="Reject"  width="15%"  press=".onCalis"  />
                     <ToolbarSpacer/>
 				<Button text="{i18n>Update}" type="Emphasized"  width="15%"  press=".onCalis"  />
 			</OverflowToolbar>

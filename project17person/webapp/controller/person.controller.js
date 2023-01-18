@@ -26,25 +26,11 @@ sap.ui.define(
           });
       },
       onCalis: function (oEvent) {
-        var oData = {
-          EventTime: "",
-          UserId: "",
-          Works: "",
-          YWorks: "",
-          Basla: "",
-        };
 
-        oData.EventTime = this._oview
-          .getModel("viewModel")
-          .getProperty("/EventTime");
-        oData.UserId = this._oview.getModel("viewModel").getProperty("/UserId");
-        oData.Basla = this._oview.getModel("viewModel").getProperty("/Basla");
-        oData.Works = this._oview.getModel("viewModel").getProperty("/Works");
-        oData.YWorks = this._oview.getModel("viewModel").getProperty("/YWorks");
 
-        var pressed_btn = oEvent.getSource().getText();
-        // var pressed_btn = oEvent.getSource().getId();
-        if (pressed_btn === "Çalış") {
+        var oData = this.getOwnerComponent().getModel("mainModel").getProperty("/Detail");
+
+        if (this.getView().byId("Work") === "Work") {
           if (oData.Works === "") {
             MessageToast.show("Yapılması planlanlanan işleri giriniz...");
             return;
@@ -57,27 +43,27 @@ sap.ui.define(
             oData.Works = oData.YWorks;
           }
         }
-        debugger;
+        var mesaj;
         //Kayıt tipi
         oData.Basla = "";
         if (pressed_btn === "Çalış") {
           oData.Basla = "B";
           mesaj = "Uzaktan çalışma başlatıldı...";
 
-          this.getView().byId("Btn1").setEnabled(false);
-          this.getView().byId("Btn2").setVisible(false);
-          this.getView().byId("Btn3").setVisible(false);
-          this.getView().byId("Pworks").setEnabled(false);
-          this.getView().byId("Yworks").setEnabled(false);
+          this.getView().byId("Work").setEnabled(false);
+          this.getView().byId("WorkFinish").setVisible(false);
+          this.getView().byId("Update").setVisible(false);
+          this.getView().byId("WorkPlaned").setEnabled(false);
+          this.getView().byId("WorkDone").setEnabled(false);
         } else {
           if (pressed_btn === "Çalışmayı Bitir") {
             oData.Basla = "F";
             mesaj = "Uzaktan çalışma bitirildi...";
-            this.getView().byId("Btn1").setEnabled(false);
-            this.getView().byId("Btn2").setEnabled(false);
-            this.getView().byId("Btn3").setEnabled(false);
-            this.getView().byId("Pworks").setEnabled(false);
-            this.getView().byId("Yworks").setEnabled(false);
+            this.getView().byId("Work").setEnabled(false);
+            this.getView().byId("WorkFinish").setEnabled(false);
+            this.getView().byId("Update").setEnabled(false);
+            this.getView().byId("WorkPlaned").setEnabled(false);
+            this.getView().byId("WorkDone").setEnabled(false);
           } else {
             mesaj = "Uzaktan çalışma güncellendi...";
           }
@@ -90,14 +76,10 @@ sap.ui.define(
             success: function (oData) {
               sap.ui.core.BusyIndicator.hide();
 
-              //Final mesaj
               sap.m.MessageBox.information(mesaj, {
                 title: "BİLGİ...",
                 onClose: function (oAction) {
                   if (oAction === "OK") {
-                    // if (pressed_btn !== "" ) {
-                    // window.close();
-                    // }
                   }
                 },
                 styleClass: "",
@@ -117,9 +99,6 @@ sap.ui.define(
 
       onIptal: function () {
         if (init_hata === "X") {
-          // window.open("", '_self').window.close();
-
-          window.close();
         } else {
           sap.m.MessageBox.confirm("Onaylıyor musunuz?", {
             title: "Programdan Çıkılacak...",
