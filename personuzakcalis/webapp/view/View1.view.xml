@@ -1,7 +1,68 @@
-<mvc:View controllerName="personuzakcalis.controller.View1"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+<mvc:View controllerName="personuzakcalis.controller.View1" xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
     <Page id="page" title="{i18n>title}">
         <content />
+
+        <Panel class="sapUiResponsiveMargin" width="100%">
+            <l:VerticalLayout class="sapUiContentPadding" width="100%">
+                <l:content>
+
+                    <Table inset="false" items="{mainModel>/RemoteList}" alternateRowColors="true"
+                        growing="true">
+                        <infoToolbar>
+                            <Toolbar>
+                                <ToolbarSpacer />
+                                <Button icon="sap-icon://refresh" type="Transparent"
+                                    press="getInitList" />
+                            </Toolbar>
+                        </infoToolbar>
+                        <columns>
+                            <Column>
+                                <Text text="{i18n>Formn}" />
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Begin">
+                                <Text text="{i18n>Basla}" />
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Begin">
+                                <Text text="{i18n>User}" />
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Begin">
+                                <Text text="{i18n>Tarih}" />
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Begin">
+                                <Text text="{i18n>Statu}" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle" app:Formn="{mainModel>Formn}"
+                                press="onSelectDetail" type="Active">
+                                <cells>
+                                    <ObjectIdentifier text="{mainModel>Formn}" class="sapUiNoMargin" />
+                                    <ObjectIdentifier text="{mainModel>BaslaT}" />
+                                    <HBox alignItems="Center">
+                                        <ObjectIdentifier title="{mainModel>UserId}"
+                                            text="{mainModel>Ename}" />
+                                    </HBox>
+                                    <ObjectStatus
+                                        text="{path: 'mainModel>Tarih', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }" />
+                                    <ObjectIdentifier text="{mainModel>StatuT}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </l:content>
+            </l:VerticalLayout>
+
+        </Panel>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button text="{i18n>newButton}" press="onPressButtonNew" icon="sap-icon://create" />
+            </Toolbar>
+        </footer>
+
     </Page>
 </mvc:View>
