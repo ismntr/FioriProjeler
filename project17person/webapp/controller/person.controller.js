@@ -25,98 +25,66 @@ sap.ui.define(
             },
           });
       },
+
       onCalis: function (oEvent) {
+        // Get the data from the "mainModel" model
+        var oData = this.getOwnerComponent()
+          .getModel("mainModel")
+          .getProperty("/Detail");
 
-
-        var oData = this.getOwnerComponent().getModel("mainModel").getProperty("/Detail");
-
-        if (this.getView().byId("Work") === "Work") {
-          if (oData.Works === "") {
-            MessageToast.show("Yapılması planlanlanan işleri giriniz...");
-            return;
-          }
-        } else {
-          if (oData.YWorks === "") {
-            MessageToast.show("Yapılan işleri giriniz...");
-            return;
-          } else {
-            oData.Works = oData.YWorks;
-          }
-        }
-        var mesaj;
-        //Kayıt tipi
-        oData.Basla = "";
-        if (pressed_btn === "Çalış") {
-          oData.Basla = "B";
-          mesaj = "Uzaktan çalışma başlatıldı...";
-
-          this.getView().byId("Work").setEnabled(false);
-          this.getView().byId("WorkFinish").setVisible(false);
-          this.getView().byId("Update").setVisible(false);
-          this.getView().byId("WorkPlaned").setEnabled(false);
-          this.getView().byId("WorkDone").setEnabled(false);
-        } else {
-          if (pressed_btn === "Çalışmayı Bitir") {
-            oData.Basla = "F";
-            mesaj = "Uzaktan çalışma bitirildi...";
-            this.getView().byId("Work").setEnabled(false);
-            this.getView().byId("WorkFinish").setEnabled(false);
-            this.getView().byId("Update").setEnabled(false);
-            this.getView().byId("WorkPlaned").setEnabled(false);
-            this.getView().byId("WorkDone").setEnabled(false);
-          } else {
-            mesaj = "Uzaktan çalışma güncellendi...";
-          }
+        // Check if the "Work" field is empty
+        if (oData.Works === "" && oData.YWorks === "") {
+          MessageToast.show("Please enter the planned or completed tasks.");
+          return;
         }
 
+        // Determine the operation based on the value of "pressed_btn"
+        var operation;
+        if (pressed_btn === "Start") {
+          operation = "B";
+        } else if (pressed_btn === "Finish") {
+          operation = "F";
+        } else {
+          operation = "U";
+        }
+
+        // Send the updated data to the backend
         sap.ui.core.BusyIndicator.show(0);
         this.getView()
           .getModel()
-          .create("/PersonelUzaktanCalismaSet", oData, {
-            success: function (oData) {
-              sap.ui.core.BusyIndicator.hide();
-
-              sap.m.MessageBox.information(mesaj, {
-                title: "BİLGİ...",
-                onClose: function (oAction) {
-                  if (oAction === "OK") {
-                  }
-                },
-                styleClass: "",
-                actions: sap.m.MessageBox.Action.OK,
-                emphasizedAction: sap.m.MessageBox.Action.OK,
-                initialFocus: null,
-                textDirection: sap.ui.core.TextDirection.Inherit,
-              });
+          .create(
+            "/PersonelUzaktanCalismaSet",
+            {
+              Works: oData.Works || oData.YWorks,
+              Basla: operation,
             },
-
-            error: function (oError) {
-              sap.ui.core.BusyIndicator.hide();
-              return;
-            },
-          });
+            {
+              success: function (oData) {
+                sap.ui.core.BusyIndicator.hide();
+                MessageToast.show("Remote work updated successfully.");
+              },
+              error: function (oError) {
+                sap.ui.core.BusyIndicator.hide();
+                MessageToast.show("Error updating remote work.");
+              },
+            }
+          );
       },
 
       onIptal: function () {
+        // Check the value of "init_hata"
         if (init_hata === "X") {
-        } else {
-          sap.m.MessageBox.confirm("Onaylıyor musunuz?", {
-            title: "Programdan Çıkılacak...",
-            onClose: function (oAction) {
-              if (oAction === "OK") {
-                close();
-              }
-            },
-            styleClass: "",
-            actions: [
-              sap.m.MessageBox.Action.OK,
-              sap.m.MessageBox.Action.CANCEL,
-            ],
-            emphasizedAction: sap.m.MessageBox.Action.OK,
-            initialFocus: null,
-            textDirection: sap.ui.core.TextDirection.Inherit,
-          });
+          return;
         }
+        // Show a confirm dialog
+        sap.m.MessageBox.confirm("Are you sure?", {
+          title: "Exiting the program...",
+          onClose: function (oAction) {
+            if (oAction === "OK") {
+              close();
+            }
+          },
+        });
       },
     });
   }
