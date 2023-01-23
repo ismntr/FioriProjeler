@@ -1,4 +1,14 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/m/library", "sap/m/MessageBox", "sap/m/MessageToast", "sap/m/Dialog", "sap/m/Button", "sap/ui/core/library"], function(e, t, i, o, s, a, n, r) {
+sap.ui.define([
+    "sap/ui/core/mvc/Controller", 
+    "sap/m/library", 
+    "sap/m/MessageBox", 
+    "sap/m/MessageToast", 
+    "sap/m/Dialog", 
+    "sap/m/Button", 
+    "sap/ui/core/library"], 
+
+
+function(e, t, i, o, s, a, n, r) {
     "use strict";
     return e.extend("personuzakcalis.controller.View1", {
         onInit: function() {
@@ -29,8 +39,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/m/library", "sap/m/MessageBox"
             sap.ui.core.BusyIndicator.show(0);
             this.getOwnerComponent().getModel().read("/PersonelUzaktanCalismaSet('" + o + "')", {
                 success: function(t, o) {
-                    sap.ui.core.BusyIndicat +
-                        or.hide(0);
+                    sap.ui.core.BusyIndicator.hide(0);
                     t.EsVeri.Formn = t.Formn;
                     e.oMainModel.setProperty("/Detail", t.EsVeri);
                     e._getDialogDetail().open();
@@ -41,8 +50,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/m/library", "sap/m/MessageBox"
                     }
                 },
                 failed: function(e) {
-                    sap.ui.core.BusyIndicator.hide +
-                        (0)
+                    sap.ui.core.BusyIndicator.hide(0)
                 }
             })
         },
@@ -54,15 +62,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/m/library", "sap/m/MessageBox"
             var t = e.getSource().data("Formn");
             var i = e.getSource().getBindingContext("mainModel").sPath;
             var o = this.oMainModel.getProperty(i);
-            th +
-                is.oMainModel.setProperty("/Detail", o);
+            this.oMainModel.setProperty("/Detail", o);
             this._getDialogDetail().open()
         },
         _getDialogDetail: function(e) {
             if (!this._oDialogDetail) {
                 this._oDialogDetail = sap.ui.xmlfragment("personuzakcalis.view.fragments.Detail", this);
-                this.getView().addDependent(this._oDialogDet +
-                    ail)
+                this.getView().addDependent(this._oDialogDetail)
             } else {
                 this._oDialogDetail.close("personuzakcalis.view.fragments.Detail")
             }
@@ -85,8 +91,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/m/library", "sap/m/MessageBox"
             }
             o = o === "" ? a.Basla : o;
             s.Basla = o;
-            s.Formn = a.Formn ? a.For +
-                mn : "";
+            s.Formn = a.Formn ? a.Formn : "";
             s.EventTime = a.EventTime;
             s.UserId = a.UserId;
             s.Works = a.Works;
@@ -95,8 +100,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/m/library", "sap/m/MessageBox"
             this.getView().getModel().create("/PersonelUzaktanCalismaSet", s, {
                 success: function(e) {
                     sap.ui.core.BusyIndicator.hide();
-                    if (e.EsReturn.Messag +
-                        e) {
+                    if (e.EsReturn.Message) {
                         i.show(e.EsReturn.Message)
                     }
                     t.onPressCloseDialog();
