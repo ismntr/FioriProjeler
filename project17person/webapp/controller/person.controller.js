@@ -25,6 +25,34 @@ sap.ui.define(
             },
           });
       },
+      getDetail: function() {
+        var e = this;
+        var t = this.oMainModel.getProperty("/Detail");
+        var o = t.Formn ? t.Formn : "";
+
+        sap.ui.core.BusyIndicator.show(0);
+        this.getOwnerComponent().getModel().read("/PersonelUzaktanCalismaSet('" + o + "')", {
+           
+            success: function(t, o) {
+                sap.ui.core.BusyIndicator.hide(0);
+                t.EsVeri.Formn = t.Formn;
+                e.oMainModel.setProperty("/Detail", t.EsVeri);
+                e._getDialogDetail().open();
+                if (t.EsReturn.Message !== "") {
+                    i.show(t.EsReturn.Message);
+                    sap.ui.core.BusyIndicator.hide(0);
+                    return
+                }
+            },
+            failed: function(e) {
+                sap.ui.core.BusyIndicator.hide(0)
+            }
+        })
+    },
+    onPressNewButton: function(e) {
+        this.oMainModel.setProperty("/Detail", {});
+        this.getDetail()
+    },
 
       onCalis: function (oEvent) {
         // Get the data from the "mainModel" model

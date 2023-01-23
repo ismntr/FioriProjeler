@@ -5,7 +5,8 @@ sap.ui.define([
     "sap/m/MessageToast", 
     "sap/m/Dialog", 
     "sap/m/Button", 
-    "sap/ui/core/library"], 
+    "sap/ui/core/library"
+], 
 
 
 function(e, t, i, o, s, a, n, r) {
@@ -36,8 +37,10 @@ function(e, t, i, o, s, a, n, r) {
             var e = this;
             var t = this.oMainModel.getProperty("/Detail");
             var o = t.Formn ? t.Formn : "";
+
             sap.ui.core.BusyIndicator.show(0);
             this.getOwnerComponent().getModel().read("/PersonelUzaktanCalismaSet('" + o + "')", {
+               
                 success: function(t, o) {
                     sap.ui.core.BusyIndicator.hide(0);
                     t.EsVeri.Formn = t.Formn;
