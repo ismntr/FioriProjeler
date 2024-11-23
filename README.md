@@ -16,3 +16,6 @@ This repository serves as a personal log of my learning journey with SAPUI5, a p
 **Structure:**
 
 The repository is organized into individual project folders, each with its own commit history. 
+
+Here is a video of showing one of my app:
+https://youtu.be/YVQUJEjLpDc
